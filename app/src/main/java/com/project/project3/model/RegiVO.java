@@ -1,4 +1,4 @@
-package com.project.project3;
+package com.project.project3.model;
 
 
 import android.widget.Button;

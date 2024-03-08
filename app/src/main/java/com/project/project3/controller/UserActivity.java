@@ -1,8 +1,10 @@
-package com.project.project3;
+package com.project.project3.controller;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.project.project3.R;
 
 public class UserActivity extends AppCompatActivity {
 
