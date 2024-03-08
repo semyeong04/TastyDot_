@@ -13,6 +13,12 @@
         android:theme="@style/Theme.Project3"
         tools:targetApi="31">
         <activity
+            android:name=".controller.AddCouponActivity"
+            android:exported="false" />
+        <activity
+            android:name=".controller.MainActivity"
+            android:exported="false" />
+        <activity
             android:name=".controller.MenuRegiActivity"
             android:exported="false" />
         <activity
@@ -22,7 +28,7 @@
             android:name=".controller.SplashActivity"
             android:exported="false" />
         <activity
-            android:name=".controller.MainActivity"
+            android:name=".controller.JoinActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
