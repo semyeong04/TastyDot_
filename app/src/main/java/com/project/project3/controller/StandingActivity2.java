@@ -1,26 +1,50 @@
-package com.project.project3.controller;
+package com.project.project3.controller; // 패키지 선언 추가
 
-import androidx.appcompat.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+
 import com.project.project3.R;
 
-import java.util.ArrayList;
-
 public class StandingActivity2 extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_standing2);
 
+
+        // 다음 버튼 클릭 이벤트 처리
+        findViewById(R.id.btn_next2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(StandingActivity2.this, StandingActivity3.class);
+                startActivity(intent);
+            }
+        });
+
+        // 나가기 버튼 클릭 이벤트 처리
+        findViewById(R.id.btn_quit1).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(StandingActivity2.this, StandingActivity1.class);
+                startActivity(intent);
+            }
+        });
+
         // Spinner를 레이아웃과 연결
-        Spinner spinner = findViewById(R.id.spinner2);
+        Spinner spinner = findViewById(R.id.tv_spinner);
 
         // Spinner에 표시할 옵션을 정의
         String[] spinnerOptions = getResources().getStringArray(R.array.spinner_options);
@@ -48,4 +72,7 @@ public class StandingActivity2 extends AppCompatActivity {
             }
         });
     }
+
+
+
 }
