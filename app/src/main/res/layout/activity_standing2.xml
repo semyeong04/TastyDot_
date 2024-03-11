@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,34 +9,33 @@
     android:backgroundTint="#FFFFFF">
 
     <Button
-        android:id="@+id/button14"
+        android:id="@+id/btn_quit1"
         android:layout_width="98dp"
-        android:layout_height="48dp"
+        android:layout_height="50dp"
         android:backgroundTint="#FFFFFF"
         android:hint="나가기"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView23"
-        android:layout_width="79dp"
-        android:layout_height="24dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="116dp"
+        android:id="@+id/tv_title2"
+        android:layout_width="314dp"
+        android:layout_height="50dp"
         android:gravity="center"
         android:text="사업자정보"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.669"
-        app:layout_constraintStart_toEndOf="@+id/button14"
+        app:layout_constraintStart_toEndOf="@+id/btn_quit1"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="413dp"
         android:layout_height="609dp"
         android:background="@drawable/edge"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_quit1">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -43,51 +43,48 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView31"
+                android:id="@+id/tv_msg15"
                 android:layout_width="302dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="30dp"
                 android:text="사업자등록증에 있는 정보를 그대로 옮겨주세요"
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="370dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/textView32"
+                    android:id="@+id/tv_msg2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="0dp"
                     android:hint="사업자 등록증" />
 
                 <ImageView
                     android:id="@+id/imageView9"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="0dp"
                     app:srcCompat="@drawable/img" />
             </LinearLayout>
 
             <TextView
-                android:id="@+id/textView33"
-                android:layout_width="match_parent"
+                android:id="@+id/tv_msg3"
+                android:layout_width="370dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp"
-                android:paddingLeft="10dp"
-                android:text="사업자등록번호" />
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="30dp"
+                android:text="사업자등록번호"
+                android:textSize="14dp" />
 
             <EditText
-                android:id="@+id/et5000"
-                android:layout_width="392dp"
+                android:id="@+id/tv_input1"
+                android:layout_width="370dp"
                 android:layout_height="42dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="20dp"
                 android:background="@drawable/edge"
                 android:ems="10"
                 android:hint="사업자등록번호를 입력해주세요."
@@ -96,33 +93,35 @@
                 android:textSize="20dp" />
 
             <TextView
-                android:id="@+id/textView35"
-                android:layout_width="match_parent"
+                android:id="@+id/tv_msg4"
+                android:layout_width="370dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp"
-                android:text="과세구분" />
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="30dp"
+                android:text="과세구분"
+                android:textSize="14dp" />
 
             <Spinner
-                android:id="@+id/spinner2"
-                android:layout_width="392dp"
+                android:id="@+id/tv_spinner"
+                android:layout_width="370dp"
                 android:layout_height="42dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="20dp"
                 android:background="@drawable/edge" />
 
             <TextView
-                android:id="@+id/textView21"
-                android:layout_width="match_parent"
+                android:id="@+id/tv_msg5"
+                android:layout_width="370dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp"
-                android:text="업태" />
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="30dp"
+                android:text="업태"
+                android:textSize="14dp" />
 
             <EditText
-                android:id="@+id/editTextText5"
-                android:layout_width="392dp"
+                android:id="@+id/tv_input2"
+                android:layout_width="370dp"
                 android:layout_height="42dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="20dp"
                 android:background="@drawable/edge"
                 android:ems="10"
                 android:hint="한글로만 입력해주세요."
@@ -131,28 +130,29 @@
                 android:textSize="20dp" />
 
             <TextView
-                android:id="@+id/textView25"
-                android:layout_width="match_parent"
+                android:id="@+id/tv_msg6"
+                android:layout_width="370dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="20dp"
                 android:text="호프,주점,도매업은 가입할 수 없어요."
                 android:textColor="#565454"
                 android:textColorHint="#000000"
                 android:textSize="10dp" />
 
             <TextView
-                android:id="@+id/textView27"
-                android:layout_width="match_parent"
+                android:id="@+id/tv_msg7"
+                android:layout_width="370dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp"
-                android:text="종목" />
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="30dp"
+                android:text="종목"
+                android:textSize="14dp" />
 
             <EditText
-                android:id="@+id/editTextText6"
-                android:layout_width="392dp"
+                android:id="@+id/tv_input3"
+                android:layout_width="370dp"
                 android:layout_height="42dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="20dp"
                 android:background="@drawable/edge"
                 android:ems="10"
                 android:hint="한글로만 입력해주세요."
@@ -161,46 +161,48 @@
                 android:textSize="20dp" />
 
             <TextView
-                android:id="@+id/textView28"
-                android:layout_width="match_parent"
+                android:id="@+id/tv_msg8"
+                android:layout_width="370dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp"
-                android:text="영업신고증 고유번호" />
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="30dp"
+                android:text="영업신고증 고유번호"
+                android:textSize="14dp" />
 
             <EditText
-                android:id="@+id/editTextText7"
-                android:layout_width="392dp"
+                android:id="@+id/tv_input4"
+                android:layout_width="370dp"
                 android:layout_height="42dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="20dp"
                 android:background="@drawable/edge"
                 android:ems="10"
-                android:hint="제                                                                          호"
+                android:hint="제                                                                     호"
                 android:inputType="text"
                 android:paddingLeft="10dp" />
 
             <TextView
-                android:id="@+id/textView29"
-                android:layout_width="match_parent"
+                android:id="@+id/tv_msg9"
+                android:layout_width="370dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="20dp"
                 android:text="영업신고증 가장 왼쪽, 제일 위에 있어요."
                 android:textColor="#565454"
                 android:textSize="10dp" />
 
             <TextView
-                android:id="@+id/textView30"
-                android:layout_width="match_parent"
+                android:id="@+id/tv_msg10"
+                android:layout_width="370dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp"
-                android:text="영업의 종류" />
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="30dp"
+                android:text="영업의 종류"
+                android:textSize="14dp" />
 
             <EditText
-                android:id="@+id/editTextText8"
-                android:layout_width="392dp"
+                android:id="@+id/tv_input5"
+                android:layout_width="370dp"
                 android:layout_height="42dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="20dp"
                 android:background="@drawable/edge"
                 android:ems="10"
                 android:hint="예) 식품접객업"
@@ -208,18 +210,19 @@
                 android:paddingLeft="10dp" />
 
             <TextView
-                android:id="@+id/textView34"
-                android:layout_width="match_parent"
+                android:id="@+id/tv_msg11"
+                android:layout_width="370dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp"
-                android:text="대표자" />
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="30dp"
+                android:text="대표자"
+                android:textSize="14dp" />
 
             <EditText
-                android:id="@+id/editTextText9"
-                android:layout_width="392dp"
+                android:id="@+id/tv_input6"
+                android:layout_width="370dp"
                 android:layout_height="42dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="20dp"
                 android:background="@drawable/edge"
                 android:ems="10"
                 android:hint="대표자를 입력해주세요."
@@ -227,18 +230,19 @@
                 android:paddingLeft="10dp" />
 
             <TextView
-                android:id="@+id/textView36"
-                android:layout_width="match_parent"
+                android:id="@+id/tv_msg12"
+                android:layout_width="370dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp"
-                android:text="영업소 명칭(상호명)" />
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="30dp"
+                android:text="영업소 명칭(상호명)"
+                android:textSize="14dp" />
 
             <EditText
-                android:id="@+id/editTextText10"
-                android:layout_width="392dp"
+                android:id="@+id/tv_input7"
+                android:layout_width="370dp"
                 android:layout_height="42dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="20dp"
                 android:background="@drawable/edge"
                 android:ems="10"
                 android:hint="상호명을 입력해주세요."
@@ -246,12 +250,13 @@
                 android:paddingLeft="10dp" />
 
             <TextView
-                android:id="@+id/textView37"
-                android:layout_width="match_parent"
+                android:id="@+id/tv_msg13"
+                android:layout_width="370dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp"
-                android:text="소재지(가게 주소)" />
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="30dp"
+                android:text="소재지(가게 주소)"
+                android:textSize="14dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -259,17 +264,19 @@
                 android:orientation="horizontal">
 
                 <EditText
-                    android:id="@+id/editTextText11"
-                    android:layout_width="196dp"
+                    android:id="@+id/tv_input8"
+                    android:layout_width="185dp"
                     android:layout_height="42dp"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="20dp"
                     android:background="@drawable/edge"
                     android:ems="10"
                     android:inputType="text" />
 
                 <Button
-                    android:layout_width="196dp"
+                    android:id="@+id/btn_addAdress"
+                    android:layout_width="match_parent"
                     android:layout_height="42dp"
+                    android:layout_marginRight="20dp"
                     android:layout_weight="1"
                     android:backgroundTint="#1B7CFE"
                     android:text="주소찾기"
@@ -279,22 +286,24 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/textView38"
-                android:layout_width="match_parent"
+                android:id="@+id/tv_msg14"
+                android:layout_width="370dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp"
-                android:text="상세주소" />
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="30dp"
+                android:text="상세주소"
+                android:textSize="14dp" />
 
             <EditText
-                android:id="@+id/editTextText12"
-                android:layout_width="392dp"
+                android:id="@+id/tv_input9"
+                android:layout_width="370dp"
                 android:layout_height="42dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="20dp"
                 android:background="@drawable/edge"
                 android:ems="10"
                 android:hint="상세주소를 입력해주세요."
-                android:inputType="text" />
+                android:inputType="text"
+                android:paddingLeft="10dp" />
 
             <TextView
                 android:id="@+id/textView39"
@@ -303,7 +312,7 @@
                 android:backgroundTint="#1B7CFD" />
 
             <Button
-                android:id="@+id/button8"
+                android:id="@+id/btn_next2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#1B7CFD"
