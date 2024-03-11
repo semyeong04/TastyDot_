@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">project3</string>
+    <string-array name="spinner_options">
+        <item>과세</item>
+        <item>면세</item>
+    </string-array>
 </resources>

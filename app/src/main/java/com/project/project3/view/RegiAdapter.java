@@ -24,12 +24,13 @@ public class RegiAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.price,parent,false);
-        ViewHolder
-        return null;
+        RegiViewHolder holder = new RegiViewHolder(view);
+        return holder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+        RegiVO items = dataset.get(position);
 
     }
 
