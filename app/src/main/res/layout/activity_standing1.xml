@@ -16,7 +16,7 @@
         app:srcCompat="@drawable/master_standing_img1" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btn2000"
         android:layout_width="187dp"
         android:layout_height="53dp"
         android:backgroundTint="#1B7CFE"

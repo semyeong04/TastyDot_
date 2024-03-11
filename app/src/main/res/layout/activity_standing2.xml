@@ -84,7 +84,7 @@
                 android:text="사업자등록번호" />
 
             <EditText
-                android:id="@+id/editTextText4"
+                android:id="@+id/et5000"
                 android:layout_width="392dp"
                 android:layout_height="42dp"
                 android:layout_marginLeft="10dp"

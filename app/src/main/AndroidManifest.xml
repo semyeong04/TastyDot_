@@ -34,10 +34,10 @@
             android:name=".controller.UserActivity"
             android:exported="false" />
         <activity
-            android:name=".controller.SplashActivity"
+            android:name=".controller.StandingActivity2"
             android:exported="false" />
         <activity
-            android:name=".controller.StandingActivity2"
+            android:name=".controller.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
