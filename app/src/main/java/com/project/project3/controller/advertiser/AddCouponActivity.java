@@ -1,4 +1,4 @@
-package com.project.project3.controller;
+package com.project.project3.controller.advertiser;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -33,7 +33,7 @@ public class AddCouponActivity extends AppCompatActivity {
 
         btnAddCoupon.setOnClickListener(v -> {
             Toast.makeText(this, "쿠폰이 발급 완료됐습니다.", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(this,UserActivity.class);
+            Intent intent = new Intent(this, UserActivity.class);
             startActivity(intent);
         });
 

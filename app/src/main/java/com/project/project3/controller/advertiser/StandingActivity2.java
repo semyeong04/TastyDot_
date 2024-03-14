@@ -1,13 +1,10 @@
-package com.project.project3.controller; // 패키지 선언 추가
+package com.project.project3.controller.advertiser; // 패키지 선언 추가
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
