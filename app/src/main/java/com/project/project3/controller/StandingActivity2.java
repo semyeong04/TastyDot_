@@ -3,23 +3,17 @@ package com.project.project3.controller; // 패키지 선언 추가
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-
-import com.google.android.material.snackbar.Snackbar;
 import com.project.project3.R;
 
 public class StandingActivity2 extends AppCompatActivity {
 
-    private WebView webView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,28 +21,11 @@ public class StandingActivity2 extends AppCompatActivity {
         setContentView(R.layout.activity_standing2);
 
 
-        // 웹뷰 초기화
-        webView = findViewById(R.id.webview);
-        webView.getSettings().setJavaScriptEnabled(true); // JavaScript 활성화
-        webView.setWebViewClient(new WebViewClient()); // 내부 웹페이지를 로드하기 위해 WebViewClient 설정
-        webView.loadUrl("https://www.blogger.com/blog/post/edit/432173056677444632/3935452453798781395?hl=ko"); // 웹뷰에 표시할 URL 설정
-        webView.setVisibility(View.GONE); // 웹뷰를 일단 숨김
-
-        // 주소 찾기 버튼 클릭 이벤트 처리
-        findViewById(R.id.btn_webview).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // 웹뷰가 보이도록 설정
-                webView.setVisibility(View.VISIBLE);
-            }
-        });
-
-        // 다음 버튼 및 나가기 버튼에 대한 클릭 이벤트 처리 등 기타 코드는 여기에 추가합니다.
-
         // 다음 버튼 클릭 이벤트 처리
         findViewById(R.id.btn_next2).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // 다음 화면으로 이동
                 Intent intent = new Intent(StandingActivity2.this, StandingActivity3.class);
                 startActivity(intent);
             }
@@ -93,6 +70,10 @@ public class StandingActivity2 extends AppCompatActivity {
         });
     }
 
-
-
+    // Retrofit Interface를 사용하여 API 호출 메서드를 정의
+    private void getAddressList(String serviceKey, String searchWord, int countPerPage, int currentPage) {
+        // 여기에 Retrofit을 사용하여 API를 호출하는 코드를 작성하세요.
+        // 호출 결과를 처리하는 부분은 onResponse() 메서드와 onFailure() 메서드에 작성합니다.
+        // API 호출 결과를 웹뷰에 표시할 수 있도록 수정하세요.
+    }
 }

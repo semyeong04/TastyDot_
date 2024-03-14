@@ -27,10 +27,13 @@
         app:layout_constraintStart_toEndOf="@+id/btn_quit1"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- 웹뷰 -->
+
+
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="413dp"
-        android:layout_height="609dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="@drawable/edge"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,6 +41,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_quit1"
         app:layout_constraintVertical_bias="0.0">
+
 
         <LinearLayout
             android:layout_width="413dp"
@@ -271,16 +275,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_msg13" />
 
-            <!-- 웹뷰 -->
-            <WebView
-                android:id="@+id/webview"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_constraintTop_toBottomOf="@id/btn_webview"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent" />
-
             <TextView
                 android:id="@+id/tv_msg14"
                 android:layout_width="370dp"
@@ -321,5 +315,9 @@
 
         </LinearLayout>
     </ScrollView>
+
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
