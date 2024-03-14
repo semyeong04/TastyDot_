@@ -3,5 +3,5 @@
     <solid android:color="#FFFFFF"/> <!-- 배경색 -->
     <stroke
         android:width="0.5dp" />
-    <corners android:radius="0dp"/> <!-- 모서리의 둥글기를 설정 -->
+    <corners android:radius="5dp"/> <!-- 모서리의 둥글기를 설정 -->
 </shape>
