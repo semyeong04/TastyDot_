@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
 
-    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,36 +12,40 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Project3"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".controller.common.DivideActivity"
+            android:name=".controller.OrderActivity"
             android:exported="false" />
         <activity
-            android:name=".controller.advertiser.JoinActivity"
+            android:name=".controller.StandingActivity4"
             android:exported="false" />
         <activity
-            android:name=".controller.advertiser.StandingActivity1"
+            android:name=".controller.StandingActivity3"
             android:exported="false" />
         <activity
-            android:name=".controller.advertiser.CheckCouponActivity"
+            android:name=".controller.JoinActivity"
             android:exported="false" />
         <activity
-            android:name=".controller.advertiser.AddCouponActivity"
+            android:name=".controller.StandingActivity2"
             android:exported="false" />
         <activity
-            android:name=".controller.advertiser.MainActivity"
+            android:name=".controller.AddCouponActivity"
             android:exported="false" />
         <activity
-            android:name=".controller.advertiser.MenuRegiActivity"
+            android:name=".controller.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".controller.advertiser.UserActivity"
+            android:name=".controller.MenuRegiActivity"
             android:exported="false" />
         <activity
-            android:name=".controller.advertiser.StandingActivity2"
+            android:name=".controller.UserActivity"
             android:exported="false" />
         <activity
-            android:name=".controller.common.SplashActivity"
+            android:name=".controller.SplashActivity"
+            android:exported="false" />
+        <activity
+            android:name=".controller.StandingActivity1"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

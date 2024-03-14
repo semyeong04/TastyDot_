@@ -27,6 +27,9 @@
         app:layout_constraintStart_toEndOf="@+id/btn_quit1"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- 웹뷰 -->
+
+
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="0dp"
@@ -34,12 +37,15 @@
         android:background="@drawable/edge"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_quit1">
+        app:layout_constraintTop_toBottomOf="@+id/btn_quit1"
+        app:layout_constraintVertical_bias="0.0">
+
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="413dp"
+            android:layout_height="42dp"
             android:orientation="vertical">
 
             <TextView
@@ -258,32 +264,16 @@
                 android:text="소재지(가게 주소)"
                 android:textSize="14dp" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <EditText
-                    android:id="@+id/tv_input8"
-                    android:layout_width="185dp"
-                    android:layout_height="42dp"
-                    android:layout_marginLeft="20dp"
-                    android:background="@drawable/edge"
-                    android:ems="10"
-                    android:inputType="text" />
-
-                <Button
-                    android:id="@+id/btn_addAdress"
-                    android:layout_width="match_parent"
-                    android:layout_height="42dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_weight="1"
-                    android:backgroundTint="#1B7CFE"
-                    android:text="주소찾기"
-                    android:textColor="#FFFFFF"
-                    app:cornerRadius="10dp" />
-
-            </LinearLayout>
+            <Button
+                android:id="@+id/btn_webview"
+                android:layout_width="370dp"
+                android:layout_height="42dp"
+                android:layout_marginLeft="20dp"
+                android:backgroundTint="#1B7CFC"
+                android:text="주소찾기"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_msg13" />
 
             <TextView
                 android:id="@+id/tv_msg14"
@@ -325,5 +315,9 @@
 
         </LinearLayout>
     </ScrollView>
+
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,7 +10,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-
 import com.project.project3.R;
 
 public class StandingActivity2 extends AppCompatActivity {
@@ -26,6 +25,7 @@ public class StandingActivity2 extends AppCompatActivity {
         findViewById(R.id.btn_next2).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // 다음 화면으로 이동
                 Intent intent = new Intent(StandingActivity2.this, StandingActivity3.class);
                 startActivity(intent);
             }
@@ -70,6 +70,10 @@ public class StandingActivity2 extends AppCompatActivity {
         });
     }
 
-
-
+    // Retrofit Interface를 사용하여 API 호출 메서드를 정의
+    private void getAddressList(String serviceKey, String searchWord, int countPerPage, int currentPage) {
+        // 여기에 Retrofit을 사용하여 API를 호출하는 코드를 작성하세요.
+        // 호출 결과를 처리하는 부분은 onResponse() 메서드와 onFailure() 메서드에 작성합니다.
+        // API 호출 결과를 웹뷰에 표시할 수 있도록 수정하세요.
+    }
 }
