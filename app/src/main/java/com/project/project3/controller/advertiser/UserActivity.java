@@ -1,4 +1,4 @@
-package com.project.project3.controller;
+package com.project.project3.controller.advertiser;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,8 +7,9 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.project.project3.R;
-
-import org.w3c.dom.Text;
+import com.project.project3.controller.advertiser.AddCouponActivity;
+import com.project.project3.controller.advertiser.CheckCouponActivity;
+import com.project.project3.controller.advertiser.MenuRegiActivity;
 
 public class UserActivity extends AppCompatActivity {
     Intent intent;

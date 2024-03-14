@@ -1,4 +1,4 @@
-package com.project.project3.controller;
+package com.project.project3.controller.advertiser;
 
 import androidx.appcompat.app.AppCompatActivity;
 

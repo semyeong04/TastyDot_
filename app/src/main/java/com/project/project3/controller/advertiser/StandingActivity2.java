@@ -1,4 +1,4 @@
-package com.project.project3.controller; // 패키지 선언 추가
+package com.project.project3.controller.advertiser; // 패키지 선언 추가
 
 import android.content.Intent;
 import android.os.Bundle;

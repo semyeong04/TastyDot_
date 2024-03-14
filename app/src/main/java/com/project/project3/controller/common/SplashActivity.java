@@ -1,4 +1,4 @@
-package com.project.project3.controller;
+package com.project.project3.controller.common;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import com.project.project3.R;
+import com.project.project3.controller.advertiser.MainActivity;
 
 public class SplashActivity extends AppCompatActivity {
 

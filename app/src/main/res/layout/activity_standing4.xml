@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    tools:context=".controller.StandingActivity4">
+    tools:context=".controller.advertiser.StandingActivity4">
 
     <ImageView
         android:id="@+id/tv_title3"
