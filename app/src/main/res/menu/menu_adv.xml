@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/bnv_home"
+        android:icon="@drawable/icon_home"
+        android:title="홈" />
+    <item
+        android:id="@+id/bnv_menu"
+        android:icon="@drawable/icon_addmenu"
+        android:title="메뉴 등록" />
+    <item
+        android:id="@+id/bnv_addcoupon"
+        android:icon="@drawable/icon_addcoupon"
+        android:title="쿠폰 등록" />
+    <item
+        android:id="@+id/bnv_checkcoupon"
+        android:icon="@drawable/icon_checkcoupon"
+        android:title="쿠폰 확인" />
+    <item
+        android:id="@+id/bnv_info"
+        android:icon="@drawable/icon_user"
+        android:title="개인정보변경" />
+</menu>

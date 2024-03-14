@@ -8,6 +8,7 @@ import android.os.Handler;
 
 import com.project.project3.R;
 import com.project.project3.controller.advertiser.MainActivity;
+import com.project.project3.controller.advertiser.StandingActivity1;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -17,7 +18,7 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
 
         new Handler().postDelayed(()->{
-            Intent intent = new Intent(this, MainActivity.class);
+            Intent intent = new Intent(this, StandingActivity1.class);
             startActivity(intent);
         },3000);
     }

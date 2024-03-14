@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
         android:layout_marginEnd="60dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="10dp"
         android:backgroundTint="#EE99C2"
         android:fontFamily="@font/scdream4"
         android:gravity="center"
@@ -21,9 +21,9 @@
         android:text="뒤로 가기"
         android:textSize="24sp"
         app:cornerRadius="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/guideline6"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -357,5 +357,26 @@
         app:layout_constraintStart_toEndOf="@+id/tvRem5000"
         app:layout_constraintTop_toTopOf="@+id/tvRem5000"
         app:layout_constraintVertical_bias="0.0" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.9" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bnv_adv1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:backgroundTint="#3A38B8E5"
+        app:itemIconTint="@drawable/bnv_color"
+        app:itemTextColor="@drawable/bnv_color"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline6"
+        app:menu="@menu/menu_adv" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
