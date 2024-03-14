@@ -36,7 +36,7 @@ android {
 
 dependencies {
     // 기존 의존성에 Kakao 맵 라이브러리 추가
-    implementation("com.kakao.sdk:v2-map-sdk:2.2.0")
+    // implementation("com.kakao.sdk:v2-map-sdk:2.2.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")

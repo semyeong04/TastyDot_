@@ -16,6 +16,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".controller.OrderActivity"
+            android:exported="false" />
+        <activity
             android:name=".controller.StandingActivity4"
             android:exported="false" />
         <activity
