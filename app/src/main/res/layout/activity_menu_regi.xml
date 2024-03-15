@@ -335,18 +335,4 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.9" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bnv_adv2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:backgroundTint="#3A38B8E5"
-        app:itemIconTint="@drawable/bnv_color"
-        app:itemTextColor="@drawable/bnv_color"
-        app:labelVisibilityMode="labeled"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline7"
-        app:menu="@menu/menu_adv" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
