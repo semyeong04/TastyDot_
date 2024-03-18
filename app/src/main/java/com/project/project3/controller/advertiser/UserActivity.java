@@ -1,51 +1,57 @@
 package com.project.project3.controller.advertiser;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
 import com.project.project3.R;
 
 public class UserActivity extends AppCompatActivity {
-    Intent intent = new Intent(this, UserActivity.class);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
+
         TextView tvMenuAdd = findViewById(R.id.tvMenuAdd); // 메뉴 추가
-        TextView tvMenuMod = findViewById(R.id.tvMenuMod); // 메뉴 수정 페이지x
         TextView tvAddCoupon = findViewById(R.id.tvAddCoupon); // 쿠폰 발급
         TextView tvNowCoupon = findViewById(R.id.tvNowCoupon); // 쿠폰 현황
-        TextView tvUsedCoupon = findViewById(R.id.tvUsedCoupon); // 이전 쿠폰 내역x
 
         // 메뉴 추가 페이지 이동
         tvMenuAdd.setOnClickListener(v -> {
-            intent = new Intent(this, MenuRegiActivity.class);
+            Intent intent = new Intent(UserActivity.this, MenuRegiActivity.class);
             startActivity(intent);
         });
-
-        // 메뉴 수정 페이지 이동
-
 
         // 쿠폰 발급 페이지 이동
         tvAddCoupon.setOnClickListener(v->{
-            intent = new Intent(this, AddCouponActivity.class);
+            Intent intent = new Intent(UserActivity.this, AddCouponActivity.class);
             startActivity(intent);
         });
-
 
         // 쿠폰 현황 페이지 이동
         tvNowCoupon.setOnClickListener(v->{
-            intent = new Intent(this, CheckCouponActivity.class);
+            Intent intent = new Intent(UserActivity.this, CheckCouponActivity.class);
             startActivity(intent);
         });
 
-        // 이전 쿠폰 내역 페이지 이동
+        // 기타 이미지뷰 이벤트 처리
+        ImageView imgInfo = findViewById(R.id.imginfo4);
+        imgInfo.setOnClickListener(v -> {
+            Intent intent = new Intent(UserActivity.this, AdvInfoActivity.class);
+            startActivity(intent);
+        });
 
-        }}
+        ImageView imgMenu = findViewById(R.id.imghome4);
+        imgMenu.setOnClickListener(v -> {
+            // 홈 이미지뷰 클릭 시 현재 액티비티를 다시 시작하는 것은 의미가 없습니다.
+            // 필요한 경우 다른 활동으로 이동하도록 수정해야 합니다.
+            // 예를 들어, MainActivity로 이동하도록 수정할 수 있습니다.
+            Intent intent = new Intent(UserActivity.this, MainActivity.class);
+            startActivity(intent);
+        });
+    }
+}
