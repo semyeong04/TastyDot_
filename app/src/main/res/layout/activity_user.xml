@@ -11,7 +11,10 @@
         android:id="@+id/imageView4"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="180dp"
+        app:layout_constraintEnd_toStartOf="@+id/imginfo4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/mainlogo" />
@@ -28,13 +31,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.45" />
+        app:layout_constraintGuide_percent="0.46" />
 
     <TextView
         android:id="@+id/tvId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="25dp"
         android:layout_marginTop="10dp"
         android:text="박은선"
         android:textSize="24sp"
@@ -46,6 +49,7 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
         android:text=" 사장님"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -58,6 +62,8 @@
         android:id="@+id/textView4"
         android:layout_width="0dp"
         android:layout_height="60dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
         android:background="@drawable/edge"
         android:fontFamily="@font/scdream6"
         android:gravity="center|left"
@@ -74,6 +80,8 @@
         android:id="@+id/tvMenuAdd"
         android:layout_width="0dp"
         android:layout_height="60dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
         android:layout_marginBottom="1dp"
         android:background="@drawable/edge"
         android:fontFamily="@font/scdream4"
@@ -92,6 +100,8 @@
         android:id="@+id/tvMenuMod"
         android:layout_width="0dp"
         android:layout_height="60dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
         android:background="@drawable/edge"
         android:fontFamily="@font/scdream4"
         android:gravity="center|left"
@@ -108,7 +118,9 @@
         android:id="@+id/textView13"
         android:layout_width="0dp"
         android:layout_height="60dp"
+        android:layout_marginLeft="25dp"
         android:layout_marginTop="10dp"
+        android:layout_marginRight="25dp"
         android:background="@drawable/edge"
         android:fontFamily="@font/scdream6"
         android:gravity="center|left"
@@ -126,6 +138,8 @@
         android:id="@+id/tvAddCoupon"
         android:layout_width="0dp"
         android:layout_height="60dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
         android:background="@drawable/edge"
         android:fontFamily="@font/scdream4"
         android:gravity="center|left"
@@ -143,6 +157,8 @@
         android:id="@+id/tvNowCoupon"
         android:layout_width="0dp"
         android:layout_height="60dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
         android:background="@drawable/edge"
         android:fontFamily="@font/scdream4"
         android:gravity="center|left"
@@ -160,6 +176,8 @@
         android:id="@+id/tvUsedCoupon"
         android:layout_width="0dp"
         android:layout_height="60dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
         android:background="@drawable/edge"
         android:fontFamily="@font/scdream4"
         android:gravity="center|left"
@@ -170,5 +188,25 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvNowCoupon" />
+
+    <ImageView
+        android:id="@+id/imghome4"
+        android:layout_width="35dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/icon_home" />
+
+    <ImageView
+        android:id="@+id/imginfo4"
+        android:layout_width="35dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="15dp"
+        app:layout_constraintEnd_toStartOf="@+id/imghome4"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/icon_user" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
