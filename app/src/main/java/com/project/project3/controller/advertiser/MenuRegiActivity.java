@@ -114,6 +114,18 @@ public class MenuRegiActivity extends AppCompatActivity {
             showDialog();
         });
 
+        ImageView imgInfo = findViewById(R.id.imginfo3);
+        imgInfo.setOnClickListener(v -> {
+            intent = new Intent(this, AdvInfoActivity.class);
+            startActivity(intent);
+        });
+
+        ImageView imgMenu = findViewById(R.id.imghome3);
+        imgMenu.setOnClickListener(v -> {
+            intent = new Intent(this, UserActivity.class);
+            startActivity(intent);
+        });
+
     }
 
     void showDialog() {

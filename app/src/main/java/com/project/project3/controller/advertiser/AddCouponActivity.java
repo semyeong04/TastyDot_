@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -37,6 +38,18 @@ public class AddCouponActivity extends AppCompatActivity {
 
         btnAddCoupon.setOnClickListener(v -> {
             Toast.makeText(this, "쿠폰이 발급 완료됐습니다.", Toast.LENGTH_SHORT).show();
+            intent = new Intent(this, UserActivity.class);
+            startActivity(intent);
+        });
+
+        ImageView imgInfo = findViewById(R.id.imginfo1);
+        imgInfo.setOnClickListener(v -> {
+            intent = new Intent(this, AdvInfoActivity.class);
+            startActivity(intent);
+        });
+
+        ImageView imgMenu = findViewById(R.id.imghome1);
+        imgMenu.setOnClickListener(v -> {
             intent = new Intent(this, UserActivity.class);
             startActivity(intent);
         });
