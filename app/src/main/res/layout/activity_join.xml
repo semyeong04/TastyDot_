@@ -40,10 +40,10 @@
         android:id="@+id/etJoinPw"
         android:layout_width="0dp"
         android:layout_height="45dp"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="50dp"
         android:background="@drawable/et_line"
         android:ems="10"
-        android:fontFamily="@font/scdream3"
+        android:fontFamily="@font/scdream4"
         android:hint="비밀번호"
         android:inputType="textPassword"
         android:outlineProvider="paddedBounds"
@@ -59,7 +59,7 @@
         android:layout_width="0dp"
         android:layout_height="45dp"
         android:layout_marginLeft="25dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="16dp"
         android:layout_marginRight="25dp"
         android:background="@drawable/et_line"
         android:ems="10"
@@ -91,7 +91,7 @@
         app:layout_constraintTop_toBottomOf="@+id/etJoinPw" />
 
     <Button
-        android:id="@+id/btnCheckCoupon"
+        android:id="@+id/btnJoin"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="60dp"
@@ -123,5 +123,31 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <Button
+        android:id="@+id/btnIdCheck"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#ED98C1"
+        android:fontFamily="@font/scdream4"
+        android:text="중복검사"
+        android:textSize="16sp"
+        app:cornerRadius="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/etJoinPw"
+        app:layout_constraintStart_toStartOf="@+id/etJoinId"
+        app:layout_constraintTop_toBottomOf="@+id/etJoinId"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/tvIdCheck"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:text="중복검사하세요!"
+        android:textColor="#808080"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/etJoinPw"
+        app:layout_constraintStart_toEndOf="@+id/btnIdCheck"
+        app:layout_constraintTop_toBottomOf="@+id/etJoinId" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
