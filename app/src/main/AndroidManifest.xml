@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -18,34 +19,33 @@
             android:name=".controller.OrderActivity"
             android:exported="false" />
         <activity
-            android:name=".controller.StandingActivity4"
+            android:name=".controller.advertiser.StandingActivity4"
             android:exported="false" />
         <activity
-            android:name=".controller.StandingActivity3"
+            android:name=".controller.advertiser.StandingActivity3"
             android:exported="false" />
         <activity
-            android:name=".controller.JoinActivity"
+            android:name=".controller.advertiser.JoinActivity"
             android:exported="false" />
         <activity
-            android:name=".controller.StandingActivity2"
+            android:name=".controller.advertiser.StandingActivity2"
             android:exported="false" />
         <activity
-            android:name=".controller.AddCouponActivity"
+            android:name=".controller.advertiser.AddCouponActivity"
             android:exported="false" />
         <activity
-            android:name=".controller.MainActivity"
+            android:name=".controller.advertiser.StandingActivity1"
             android:exported="false" />
         <activity
-            android:name=".controller.MenuRegiActivity"
+            android:name=".controller.advertiser.MenuRegiActivity"
             android:exported="false" />
         <activity
-            android:name=".controller.UserActivity"
-            android:exported="false" />
+            android:name=".controller.advertiser.UserActivity"
+            android:exported="false" /> <!-- <activity -->
+        <!-- android:name=".controller.advertiser.SplashActivity" -->
+        <!-- android:exported="false" /> -->
         <activity
-            android:name=".controller.SplashActivity"
-            android:exported="false" />
-        <activity
-            android:name=".controller.StandingActivity1"
+            android:name=".controller.advertiser.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

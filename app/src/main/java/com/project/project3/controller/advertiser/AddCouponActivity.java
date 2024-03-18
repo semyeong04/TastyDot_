@@ -33,7 +33,7 @@ public class AddCouponActivity extends AppCompatActivity {
         EditText et5000 = findViewById(R.id.et5000);
         Button btn5000 = findViewById(R.id.btn5000);
 
-        Button btnAddCoupon = findViewById(R.id.btnCheckCoupon);
+        Button btnAddCoupon = findViewById(R.id.btnJoin);
 
         btnAddCoupon.setOnClickListener(v -> {
             Toast.makeText(this, "쿠폰이 발급 완료됐습니다.", Toast.LENGTH_SHORT).show();

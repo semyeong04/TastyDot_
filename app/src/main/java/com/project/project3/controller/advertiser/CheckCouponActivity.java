@@ -19,7 +19,7 @@ public class CheckCouponActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_check_coupon);
 
-        Button btnCheckCoupon = findViewById(R.id.btnCheckCoupon);
+        Button btnCheckCoupon = findViewById(R.id.btnJoin);
         btnCheckCoupon.setOnClickListener(v -> {
 
             // 클릭시 유저액티비티로 이동
