@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
         android:layout_marginEnd="60dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="40dp"
         android:backgroundTint="#EE99C2"
         android:fontFamily="@font/scdream4"
         android:gravity="center"
@@ -21,7 +21,7 @@
         android:text="뒤로 가기"
         android:textSize="24sp"
         app:cornerRadius="12dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline6"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
@@ -29,7 +29,7 @@
     <TextView
         android:id="@+id/textView1"
         android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_height="40dp"
         android:background="@drawable/text_circle"
         android:fontFamily="@font/scdream5"
         android:gravity="center"
@@ -42,7 +42,7 @@
     <TextView
         android:id="@+id/textView38"
         android:layout_width="105dp"
-        android:layout_height="30dp"
+        android:layout_height="40dp"
         android:layout_marginStart="25dp"
         android:background="@drawable/edge"
         android:elevation="10dp"
@@ -59,7 +59,7 @@
     <TextView
         android:id="@+id/tvRem1000"
         android:layout_width="70dp"
-        android:layout_height="30dp"
+        android:layout_height="40dp"
         android:layout_marginStart="272dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/text_circle"
@@ -72,7 +72,7 @@
     <TextView
         android:id="@+id/textView2"
         android:layout_width="90dp"
-        android:layout_height="30dp"
+        android:layout_height="40dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/edge"
@@ -87,7 +87,7 @@
     <TextView
         android:id="@+id/textView6"
         android:layout_width="90dp"
-        android:layout_height="30dp"
+        android:layout_height="40dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="25dp"
         android:background="@drawable/edge"
@@ -102,7 +102,7 @@
     <TextView
         android:id="@+id/tvRem3000"
         android:layout_width="70dp"
-        android:layout_height="30dp"
+        android:layout_height="40dp"
         android:layout_marginStart="60dp"
         android:background="@drawable/text_circle"
         android:fontFamily="@font/scdream4"
@@ -116,7 +116,7 @@
     <TextView
         android:id="@+id/tvRem5000"
         android:layout_width="70dp"
-        android:layout_height="30dp"
+        android:layout_height="40dp"
         android:layout_marginStart="60dp"
         android:background="@drawable/text_circle"
         android:fontFamily="@font/scdream4"
@@ -130,7 +130,7 @@
     <TextView
         android:id="@+id/tvUse5000"
         android:layout_width="70dp"
-        android:layout_height="30dp"
+        android:layout_height="40dp"
         android:layout_marginStart="28dp"
         android:background="@drawable/text_circle"
         android:fontFamily="@font/scdream4"
@@ -144,7 +144,7 @@
     <TextView
         android:id="@+id/tvUse3000"
         android:layout_width="70dp"
-        android:layout_height="30dp"
+        android:layout_height="40dp"
         android:layout_marginStart="28dp"
         android:background="@drawable/text_circle"
         android:fontFamily="@font/scdream4"
@@ -157,7 +157,7 @@
     <TextView
         android:id="@+id/textView11"
         android:layout_width="90dp"
-        android:layout_height="30dp"
+        android:layout_height="40dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="25dp"
         android:background="@drawable/edge"
@@ -172,7 +172,7 @@
     <TextView
         android:id="@+id/tvRem2000"
         android:layout_width="70dp"
-        android:layout_height="30dp"
+        android:layout_height="40dp"
         android:layout_marginStart="60dp"
         android:background="@drawable/text_circle"
         android:fontFamily="@font/scdream4"
@@ -186,7 +186,7 @@
     <TextView
         android:id="@+id/textView20"
         android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_height="40dp"
         android:background="@drawable/text_circle"
         android:fontFamily="@font/scdream5"
         android:gravity="center"
@@ -199,7 +199,7 @@
     <TextView
         android:id="@+id/tvUse2000"
         android:layout_width="70dp"
-        android:layout_height="30dp"
+        android:layout_height="40dp"
         android:layout_marginStart="28dp"
         android:background="@drawable/text_circle"
         android:fontFamily="@font/scdream4"
@@ -213,7 +213,7 @@
     <TextView
         android:id="@+id/textView12"
         android:layout_width="90dp"
-        android:layout_height="30dp"
+        android:layout_height="40dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="25dp"
         android:background="@drawable/edge"
@@ -228,7 +228,7 @@
     <TextView
         android:id="@+id/textView19"
         android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_height="40dp"
         android:background="@drawable/text_circle"
         android:fontFamily="@font/scdream5"
         android:gravity="center"
@@ -240,7 +240,7 @@
     <TextView
         android:id="@+id/textView18"
         android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_height="40dp"
         android:background="@drawable/text_circle"
         android:fontFamily="@font/scdream5"
         android:gravity="center"
@@ -270,7 +270,7 @@
     <TextView
         android:id="@+id/textView37"
         android:layout_width="105dp"
-        android:layout_height="30dp"
+        android:layout_height="40dp"
         android:layout_marginStart="140dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/edge"
@@ -286,7 +286,7 @@
     <TextView
         android:id="@+id/tvUse1000"
         android:layout_width="70dp"
-        android:layout_height="30dp"
+        android:layout_height="40dp"
         android:layout_marginStart="28dp"
         android:background="@drawable/text_circle"
         android:fontFamily="@font/scdream4"
@@ -309,7 +309,7 @@
     <TextView
         android:id="@+id/textView10"
         android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_height="40dp"
         android:background="@drawable/text_circle"
         android:fontFamily="@font/scdream5"
         android:gravity="center"
@@ -322,7 +322,7 @@
     <TextView
         android:id="@+id/textView17"
         android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_height="40dp"
         android:background="@drawable/text_circle"
         android:fontFamily="@font/scdream5"
         android:gravity="center"
@@ -335,7 +335,7 @@
     <TextView
         android:id="@+id/textView24"
         android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_height="40dp"
         android:background="@drawable/text_circle"
         android:fontFamily="@font/scdream5"
         android:gravity="center"
@@ -348,7 +348,7 @@
     <TextView
         android:id="@+id/textView41"
         android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_height="40dp"
         android:background="@drawable/text_circle"
         android:fontFamily="@font/scdream5"
         android:gravity="center"
@@ -357,26 +357,5 @@
         app:layout_constraintStart_toEndOf="@+id/tvRem5000"
         app:layout_constraintTop_toTopOf="@+id/tvRem5000"
         app:layout_constraintVertical_bias="0.0" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.9" />
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bnv_adv1"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:backgroundTint="#3A38B8E5"
-        app:itemIconTint="@drawable/bnv_color"
-        app:itemTextColor="@drawable/bnv_color"
-        app:labelVisibilityMode="labeled"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline6"
-        app:menu="@menu/menu_adv" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

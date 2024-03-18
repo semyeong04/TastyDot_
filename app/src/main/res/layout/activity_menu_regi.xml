@@ -48,7 +48,7 @@
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="44dp"
         android:backgroundTint="#EE99C2"
         android:fontFamily="@font/scdream4"
         android:gravity="center"
@@ -97,7 +97,7 @@
         android:layout_width="100dp"
         android:layout_height="30dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="144dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/edge"
         android:gravity="center|left"
         android:outlineProvider="paddedBounds"
@@ -105,7 +105,7 @@
         android:text="가격"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etMenuName" />
+        app:layout_constraintTop_toBottomOf="@+id/btnPicAdd" />
 
     <Button
         android:id="@+id/btnAddMenu"
@@ -113,7 +113,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
         android:layout_marginEnd="60dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="40dp"
         android:backgroundTint="#0AA8E0"
         android:fontFamily="@font/scdream4"
         android:insetTop="0dp"
@@ -121,7 +121,7 @@
         android:text="메뉴 등록"
         android:textSize="24sp"
         app:cornerRadius="12dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline7"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintHorizontal_weight="1"
@@ -140,7 +140,7 @@
     <EditText
         android:id="@+id/etMenu1"
         android:layout_width="150dp"
-        android:layout_height="30dp"
+        android:layout_height="35dp"
         android:layout_marginStart="15dp"
         android:background="@drawable/edge"
         android:ems="10"
@@ -155,7 +155,7 @@
     <EditText
         android:id="@+id/etPrice3"
         android:layout_width="100dp"
-        android:layout_height="30dp"
+        android:layout_height="35dp"
         android:layout_marginStart="40dp"
         android:background="@drawable/edge"
         android:ems="10"
@@ -171,7 +171,7 @@
     <EditText
         android:id="@+id/etPrice4"
         android:layout_width="100dp"
-        android:layout_height="30dp"
+        android:layout_height="35dp"
         android:layout_marginStart="40dp"
         android:background="@drawable/edge"
         android:ems="10"
@@ -187,7 +187,7 @@
     <EditText
         android:id="@+id/etMenu2"
         android:layout_width="150dp"
-        android:layout_height="30dp"
+        android:layout_height="35dp"
         android:layout_marginTop="15dp"
         android:background="@drawable/edge"
         android:ems="10"
@@ -203,7 +203,7 @@
     <EditText
         android:id="@+id/etMenu3"
         android:layout_width="150dp"
-        android:layout_height="30dp"
+        android:layout_height="35dp"
         android:layout_marginTop="15dp"
         android:background="@drawable/edge"
         android:ems="10"
@@ -219,7 +219,7 @@
     <EditText
         android:id="@+id/etPrice2"
         android:layout_width="100dp"
-        android:layout_height="30dp"
+        android:layout_height="35dp"
         android:layout_marginStart="40dp"
         android:background="@drawable/edge"
         android:ems="10"
@@ -235,7 +235,7 @@
     <EditText
         android:id="@+id/etPrice1"
         android:layout_width="100dp"
-        android:layout_height="30dp"
+        android:layout_height="35dp"
         android:layout_marginStart="40dp"
         android:background="@drawable/edge"
         android:ems="10"
@@ -251,7 +251,7 @@
     <EditText
         android:id="@+id/etMenu4"
         android:layout_width="150dp"
-        android:layout_height="30dp"
+        android:layout_height="35dp"
         android:layout_marginTop="15dp"
         android:background="@drawable/edge"
         android:ems="10"
@@ -278,7 +278,7 @@
     <CheckBox
         android:id="@+id/chbox1"
         android:layout_width="wrap_content"
-        android:layout_height="30dp"
+        android:layout_height="35dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="20dp"
         android:buttonTint="#EE99C2"
@@ -291,7 +291,7 @@
     <CheckBox
         android:id="@+id/chBox2"
         android:layout_width="wrap_content"
-        android:layout_height="30dp"
+        android:layout_height="35dp"
         android:layout_marginTop="15dp"
         android:buttonTint="#EE99C2"
         android:text="등록"
@@ -304,7 +304,7 @@
     <CheckBox
         android:id="@+id/chBox4"
         android:layout_width="wrap_content"
-        android:layout_height="30dp"
+        android:layout_height="35dp"
         android:layout_marginTop="15dp"
         android:buttonTint="#EE99C2"
         android:text="등록"
@@ -318,7 +318,7 @@
     <CheckBox
         android:id="@+id/chBox3"
         android:layout_width="wrap_content"
-        android:layout_height="30dp"
+        android:layout_height="35dp"
         android:layout_marginTop="15dp"
         android:buttonTint="#EE99C2"
         android:text="등록"
@@ -327,26 +327,5 @@
         app:layout_constraintEnd_toEndOf="@+id/chBox2"
         app:layout_constraintStart_toStartOf="@+id/chBox2"
         app:layout_constraintTop_toBottomOf="@+id/chBox2" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.9" />
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bnv_adv2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:backgroundTint="#3A38B8E5"
-        app:itemIconTint="@drawable/bnv_color"
-        app:itemTextColor="@drawable/bnv_color"
-        app:labelVisibilityMode="labeled"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline7"
-        app:menu="@menu/menu_adv" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
