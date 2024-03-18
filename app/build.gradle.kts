@@ -39,6 +39,10 @@ dependencies {
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0") // Gson 변환기를 사용할 경우
     implementation ("com.squareup.retrofit2:converter-scalars:2.9.0")
 
+    // 이미지 가져오는 Glide 라이브러리 추가함
+    implementation ("com.github.bumptech.glide:glide:4.12.0")
+    annotationProcessor ("com.github.bumptech.glide:compiler:4.12.0")
+
     implementation("com.android.volley:volley:1.2.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")

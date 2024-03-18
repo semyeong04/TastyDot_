@@ -13,11 +13,11 @@
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginLeft="25dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="32dp"
         android:layout_marginRight="25dp"
         android:background="@drawable/edge_menucolor"
         android:fontFamily="@font/scdream7"
-        android:gravity="center|left"
+        android:gravity="center"
         android:paddingLeft="10dp"
         android:text="메뉴 등록"
         android:textSize="24sp"
@@ -30,7 +30,7 @@
         android:layout_width="100dp"
         android:layout_height="30dp"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/edge"
         android:gravity="center|left"
         android:outlineProvider="paddedBounds"
@@ -47,8 +47,7 @@
         android:id="@+id/btnPicAdd"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="32dp"
         android:backgroundTint="#EE99C2"
         android:fontFamily="@font/scdream4"
         android:gravity="center"
@@ -57,30 +56,27 @@
         android:text="사진 추가"
         android:textSize="14sp"
         app:cornerRadius="12dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView26" />
+        app:layout_constraintStart_toStartOf="@+id/textView28"
+        app:layout_constraintTop_toBottomOf="@+id/textView28" />
 
     <TextView
-        android:id="@+id/textView26"
+        android:id="@+id/textView28"
         android:layout_width="100dp"
         android:layout_height="30dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="8dp"
         android:background="@drawable/edge"
         android:gravity="center|left"
         android:outlineProvider="paddedBounds"
         android:paddingLeft="10dp"
         android:text="메뉴 사진"
         android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etMenuName" />
+        tools:layout_editor_absoluteX="25dp"
+        tools:layout_editor_absoluteY="283dp" />
 
     <EditText
         android:id="@+id/etMenuName"
         android:layout_width="0dp"
         android:layout_height="30dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginStart="16dp"
         android:layout_marginEnd="25dp"
         android:background="@drawable/edge"
         android:ems="10"
@@ -89,15 +85,15 @@
         android:paddingLeft="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+        app:layout_constraintStart_toEndOf="@+id/textView7"
+        app:layout_constraintTop_toTopOf="@+id/textView7" />
 
     <TextView
         android:id="@+id/textView9"
         android:layout_width="100dp"
         android:layout_height="30dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/edge"
         android:gravity="center|left"
         android:outlineProvider="paddedBounds"
@@ -141,195 +137,44 @@
         app:srcCompat="@drawable/mainlogo" />
 
     <EditText
-        android:id="@+id/etMenu1"
-        android:layout_width="150dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="15dp"
-        android:background="@drawable/edge"
-        android:ems="10"
-        android:hint="상세 메뉴 내용"
-        android:inputType="text"
-        android:paddingLeft="10dp"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@+id/chbox1"
-        app:layout_constraintStart_toEndOf="@+id/chbox1"
-        app:layout_constraintTop_toTopOf="@+id/chbox1" />
-
-    <EditText
-        android:id="@+id/etPrice3"
-        android:layout_width="100dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="40dp"
-        android:background="@drawable/edge"
-        android:ems="10"
-        android:hint="가격"
-        android:inputType="number"
-        android:paddingLeft="10dp"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@+id/etMenu3"
-        app:layout_constraintStart_toEndOf="@+id/etMenu3"
-        app:layout_constraintTop_toTopOf="@+id/etMenu3"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <EditText
         android:id="@+id/etPrice4"
-        android:layout_width="100dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="40dp"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="16dp"
         android:background="@drawable/edge"
         android:ems="10"
         android:hint="가격"
         android:inputType="number"
         android:paddingLeft="10dp"
         android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@+id/etMenu4"
-        app:layout_constraintStart_toEndOf="@+id/etMenu4"
-        app:layout_constraintTop_toTopOf="@+id/etMenu4"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <EditText
-        android:id="@+id/etMenu2"
-        android:layout_width="150dp"
-        android:layout_height="35dp"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/edge"
-        android:ems="10"
-        android:hint="상세 메뉴 내용"
-        android:inputType="text"
-        android:paddingLeft="10dp"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@+id/etMenu1"
-        app:layout_constraintHorizontal_bias="0.8"
-        app:layout_constraintStart_toStartOf="@+id/etMenu1"
-        app:layout_constraintTop_toBottomOf="@+id/etMenu1" />
-
-    <EditText
-        android:id="@+id/etMenu3"
-        android:layout_width="150dp"
-        android:layout_height="35dp"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/edge"
-        android:ems="10"
-        android:hint="상세 메뉴 내용"
-        android:inputType="text"
-        android:paddingLeft="10dp"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@+id/etMenu2"
-        app:layout_constraintHorizontal_bias="0.8"
-        app:layout_constraintStart_toStartOf="@+id/etMenu2"
-        app:layout_constraintTop_toBottomOf="@+id/etMenu2" />
-
-    <EditText
-        android:id="@+id/etPrice2"
-        android:layout_width="100dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="40dp"
-        android:background="@drawable/edge"
-        android:ems="10"
-        android:hint="가격"
-        android:inputType="number"
-        android:paddingLeft="10dp"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@+id/etMenu2"
-        app:layout_constraintStart_toEndOf="@+id/etMenu2"
-        app:layout_constraintTop_toTopOf="@+id/etMenu2"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <EditText
-        android:id="@+id/etPrice1"
-        android:layout_width="100dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="40dp"
-        android:background="@drawable/edge"
-        android:ems="10"
-        android:hint="가격"
-        android:inputType="number"
-        android:paddingLeft="10dp"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@+id/etMenu1"
-        app:layout_constraintStart_toEndOf="@+id/etMenu1"
-        app:layout_constraintTop_toTopOf="@+id/etMenu1"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintEnd_toEndOf="@+id/etMenu4"
+        app:layout_constraintStart_toEndOf="@+id/textView9"
+        app:layout_constraintTop_toTopOf="@+id/textView9" />
 
     <EditText
         android:id="@+id/etMenu4"
-        android:layout_width="150dp"
-        android:layout_height="35dp"
-        android:layout_marginTop="15dp"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="16dp"
         android:background="@drawable/edge"
         android:ems="10"
         android:hint="상세 메뉴 내용"
         android:inputType="text"
         android:paddingLeft="10dp"
         android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@+id/etMenu3"
-        app:layout_constraintHorizontal_bias="0.8"
-        app:layout_constraintStart_toStartOf="@+id/etMenu3"
-        app:layout_constraintTop_toBottomOf="@+id/etMenu3" />
+        app:layout_constraintEnd_toEndOf="@+id/etMenuName"
+        app:layout_constraintStart_toEndOf="@+id/textView26"
+        app:layout_constraintTop_toTopOf="@+id/textView26" />
 
     <ImageView
         android:id="@+id/imgMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
         android:layout_marginEnd="44dp"
         android:padding="1dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etMenuName"
-        app:srcCompat="@drawable/camera" />
-
-    <CheckBox
-        android:id="@+id/chbox1"
-        android:layout_width="wrap_content"
-        android:layout_height="35dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="20dp"
-        android:buttonTint="#EE99C2"
-        android:text="등록"
-        android:textColor="#D1000000"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
-
-    <CheckBox
-        android:id="@+id/chBox2"
-        android:layout_width="wrap_content"
-        android:layout_height="35dp"
-        android:layout_marginTop="15dp"
-        android:buttonTint="#EE99C2"
-        android:text="등록"
-        android:textColor="#D1000000"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@+id/chbox1"
-        app:layout_constraintStart_toStartOf="@+id/chbox1"
-        app:layout_constraintTop_toBottomOf="@+id/chbox1" />
-
-    <CheckBox
-        android:id="@+id/chBox4"
-        android:layout_width="wrap_content"
-        android:layout_height="35dp"
-        android:layout_marginTop="15dp"
-        android:buttonTint="#EE99C2"
-        android:text="등록"
-        android:textColor="#D1000000"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@+id/chBox3"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/chBox3"
-        app:layout_constraintTop_toBottomOf="@+id/chBox3" />
-
-    <CheckBox
-        android:id="@+id/chBox3"
-        android:layout_width="wrap_content"
-        android:layout_height="35dp"
-        android:layout_marginTop="15dp"
-        android:buttonTint="#EE99C2"
-        android:text="등록"
-        android:textColor="#D1000000"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@+id/chBox2"
-        app:layout_constraintStart_toStartOf="@+id/chBox2"
-        app:layout_constraintTop_toBottomOf="@+id/chBox2" />
+        app:srcCompat="@drawable/camera"
+        tools:layout_editor_absoluteY="305dp" />
 
     <ImageView
         android:id="@+id/imginfo3"
@@ -350,5 +195,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/icon_home" />
+
+    <TextView
+        android:id="@+id/textView26"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/edge"
+        android:outlineProvider="paddedBounds"
+        android:paddingLeft="10dp"
+        android:text="메뉴 설명"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/textView7"
+        app:layout_constraintTop_toBottomOf="@+id/etMenuName" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
