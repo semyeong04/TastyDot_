@@ -37,6 +37,7 @@ public class UserActivity extends AppCompatActivity {
     String userEmail;
     TextView tvID;
     TextView tvStore;
+    int storeIdx;
     ImageView imgStore;
 
     static RequestQueue requestQueue;
@@ -65,18 +66,23 @@ public class UserActivity extends AppCompatActivity {
          tvID = findViewById(R.id.tvId); // 사용자 이름
          tvStore = findViewById(R.id.tvStore); // 사용자 가게 이름
         imgStore = findViewById(R.id.imgStore);
+
+
         tvID.setText(userName);
 
 
         // 메뉴 추가 페이지 이동
         tvMenuAdd.setOnClickListener(v -> {
             intent = new Intent(this, MenuRegiActivity.class);
+            Log.d("storename", String.valueOf(storeIdx));
+            intent.putExtra("storeIdx", storeIdx);
             startActivity(intent);
         });
 
         // 메뉴 수정 페이지 이동
         tvMenuMod.setOnClickListener(v -> {
             intent = new Intent(this, MenuModActivity.class);
+
             startActivity(intent);
         });
 
@@ -119,7 +125,7 @@ public class UserActivity extends AppCompatActivity {
 
                                 JSONObject jsonResponse = new JSONObject(response);
                                 // 유저에서 다 가게로 바꿀 것
-                                int storeIdx = jsonResponse.getInt("store_idx");
+                                 storeIdx = jsonResponse.getInt("store_idx");
                                 String storeName = jsonResponse.getString("storeName");
                                 String storeDesc = jsonResponse.getString("storeDesc");
                                 String storeImg = jsonResponse.getString("storeImg");

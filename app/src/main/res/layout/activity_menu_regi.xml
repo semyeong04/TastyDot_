@@ -80,7 +80,8 @@
         android:id="@+id/textView28"
         android:layout_width="100dp"
         android:layout_height="30dp"
-        android:layout_marginStart="25dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/edge"
         android:fontFamily="@font/scdream5"
         android:gravity="center"
@@ -88,7 +89,7 @@
         android:text="메뉴 사진"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="410dp" />
+        app:layout_constraintTop_toBottomOf="@+id/etModExplain" />
 
     <EditText
         android:id="@+id/etMenuName"
