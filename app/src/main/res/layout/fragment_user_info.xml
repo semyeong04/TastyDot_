@@ -10,25 +10,57 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="60dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
+            android:src="@drawable/tastydot"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_begin="658dp" />
+            app:layout_constraintGuide_percent="0.10015175" />
+
+        <ImageView
+            android:id="@+id/imgLogout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="5dp"
+            app:layout_constraintBottom_toTopOf="@+id/tvLogout"
+            app:layout_constraintEnd_toEndOf="@+id/tvLogout"
+            app:layout_constraintHorizontal_bias="0.681"
+            app:layout_constraintStart_toStartOf="@+id/tvLogout"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/icon_logout" />
+
+        <TextView
+            android:id="@+id/tvLogout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:text="로그아웃"
+            app:layout_constraintBottom_toTopOf="@+id/guideline3"
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
             android:id="@+id/textView14"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
             android:fontFamily="@font/scdream5"
             android:text="박은선"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline5" />
+            app:layout_constraintTop_toTopOf="@+id/guideline3" />
 
         <TextView
             android:id="@+id/textView15"
@@ -44,36 +76,14 @@
             app:layout_constraintVertical_bias="1.0" />
 
         <ImageView
-            android:id="@+id/imageView7"
-            android:layout_width="60dp"
-            android:layout_height="45dp"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="8dp"
-            android:src="@drawable/tastydot"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_begin="60dp" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_begin="263dp" />
-
-        <ImageView
             android:id="@+id/imageView16"
             android:layout_width="94dp"
             android:layout_height="78dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="20dp"
             android:src="@drawable/user_coupon"
-            tools:layout_editor_absoluteX="36dp"
-            tools:layout_editor_absoluteY="134dp" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
         <TextView
             android:id="@+id/textView16"
@@ -90,9 +100,12 @@
             android:id="@+id/imageView17"
             android:layout_width="92dp"
             android:layout_height="79dp"
+            android:layout_marginStart="24dp"
             android:src="@drawable/user_adress"
-            tools:layout_editor_absoluteX="146dp"
-            tools:layout_editor_absoluteY="132dp" />
+            app:layout_constraintBottom_toBottomOf="@+id/imageView16"
+            app:layout_constraintStart_toEndOf="@+id/imageView16"
+            app:layout_constraintTop_toTopOf="@+id/imageView16"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/textView27"
@@ -109,7 +122,7 @@
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_marginStart="25dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="12dp"
             android:layout_marginEnd="25dp"
             android:background="@drawable/edge_menucolor"
             android:fontFamily="@font/scdream3"
@@ -119,11 +132,12 @@
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline6" />
+            app:layout_constraintTop_toTopOf="@+id/guideline5" />
 
         <TextView
-            android:id="@+id/textView30"
+            android:id="@+id/tvUserUsedCoupon"
             android:layout_width="0dp"
             android:layout_height="45dp"
             android:layout_marginStart="25dp"
@@ -135,6 +149,7 @@
             android:paddingLeft="10dp"
             android:text="쿠폰 사용내역"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView29" />
 
@@ -152,7 +167,7 @@
             android:text="방문 기록"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView30" />
+            app:layout_constraintTop_toBottomOf="@+id/tvUserUsedCoupon" />
 
         <TextView
             android:id="@+id/textView32"
@@ -167,41 +182,16 @@
             android:paddingLeft="10dp"
             android:text="개인정보 변경"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView31" />
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:backgroundTint="#330AA8E0"
-            app:itemIconTint="@drawable/bnv_color"
-            app:itemTextColor="@drawable/bnv_color"
-            app:labelVisibilityMode="labeled"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline3"
-            app:menu="@menu/menu_adv" />
-
-        <ImageView
-            android:id="@+id/imgUserLogout"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="5dp"
-            android:src="@drawable/icon_logout"
-            app:layout_constraintBottom_toTopOf="@+id/tvUserLogout"
-            app:layout_constraintEnd_toEndOf="@+id/tvUserLogout"
-            app:layout_constraintStart_toStartOf="@+id/tvUserLogout"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tvUserLogout"
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:text="로그아웃"
-            app:layout_constraintBottom_toTopOf="@+id/guideline5"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="263dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
