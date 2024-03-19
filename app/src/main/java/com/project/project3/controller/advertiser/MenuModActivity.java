@@ -14,9 +14,12 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,6 +30,8 @@ import java.io.IOException;
 
 
 public class MenuModActivity extends AppCompatActivity {
+
+    String[] items = {"카리나", "윈터", "닝닝", "지젤"};
     Intent intent;
     ImageView imgMenu;
     ActivityResultLauncher<Intent> startActivityResult;
@@ -35,9 +40,22 @@ public class MenuModActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_mod);
 
-        // 현재 정해진 메뉴 이름, 가격
-        TextView tvMenuName = findViewById(R.id.tvNowMenu);
-        TextView tvMenuPrice = findViewById(R.id.tvNowPrice);
+        Spinner spinner = findViewById(R.id.spNowMenu);
+        // ArrayAdapter를 사용하여 스피너와 아이템을 연결합니다.
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
+        spinner.setAdapter(adapter);
+        // 스피너에서 아이템을 선택했을 때 동작하는 리스너를 추가합니다.
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                // Spinner는 스피너 아이템을 자동으로 선택한 항목으로 표시합니다.
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // 아무 것도 선택되지 않았을 때의 동작을 정의할 수 있습니다.
+            }
+        });
 
 
         EditText menuName = findViewById(R.id.etModMenu);

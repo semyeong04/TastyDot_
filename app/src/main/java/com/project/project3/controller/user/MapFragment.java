@@ -1,20 +1,24 @@
 package com.project.project3.controller.user;
 
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
+import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.fragment.app.Fragment;
+
+import com.kakao.util.maps.helper.Utility;
+
+import net.daum.mf.map.api.MapPOIItem;
+import net.daum.mf.map.api.MapPoint;
+import net.daum.mf.map.api.MapView;
 import com.project.project3.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link MapFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class MapFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
@@ -30,14 +34,7 @@ public class MapFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment MapFragment.
-     */
+
     // TODO: Rename and change types and number of parameters
     public static MapFragment newInstance(String param1, String param2) {
         MapFragment fragment = new MapFragment();
@@ -60,7 +57,29 @@ public class MapFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_map, container, false);
+
+        View view = inflater.inflate(R.layout.fragment_map, container, false);
+
+        MapView mapView = new MapView(getContext());
+
+        // 맵뷰 시작 위도,경도
+        mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(34.808258, 126.390906), true);
+
+        // MARKER_POINT를 위도,경도 설정하면 마커가 찍힌다.
+        // setItemName은 음식점 이름
+        MapPoint MARKER_POINT = MapPoint.mapPointWithGeoCoord(34.808258, 126.390906);
+        MapPOIItem marker = new MapPOIItem();
+        marker.setItemName("Default Marker");
+        marker.setTag(0);
+        marker.setMapPoint(MARKER_POINT);
+        marker.setMarkerType(MapPOIItem.MarkerType.BluePin); // 기본으로 제공하는 BluePin 마커 모양.
+        marker.setSelectedMarkerType(MapPOIItem.MarkerType.RedPin); // 마커를 클릭했을때, 기본으로 제공하는 RedPin 마커 모양.
+
+        mapView.addPOIItem(marker);
+        ViewGroup mapViewContainer = view.findViewById(R.id.mv);
+        mapViewContainer.addView(mapView);
+
+        return view;
     }
+
 }

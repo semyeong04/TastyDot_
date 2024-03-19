@@ -14,6 +14,11 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        ndk.abiFilters.add("arm64-v8a")
+        ndk.abiFilters.add("armeabi-v7a")
+        ndk.abiFilters.add("armeabi")
+
     }
 
     buildTypes {
@@ -41,7 +46,10 @@ dependencies {
 
     // 이미지 가져오는 Glide 라이브러리 추가함
     implementation ("com.github.bumptech.glide:glide:4.12.0")
+    implementation(files("libs\\libDaumMapAndroid.jar"))
     annotationProcessor ("com.github.bumptech.glide:compiler:4.12.0")
+
+    implementation("com.kakao.maps.open:android:2.9.5")
 
     implementation("com.android.volley:volley:1.2.0")
     implementation("androidx.appcompat:appcompat:1.6.1")

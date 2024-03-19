@@ -28,7 +28,7 @@ public class UserLoginActivity extends AppCompatActivity {
                 String id = userId.getText().toString();
                 String pw = userPw.getText().toString();
                 if(id.equals("test")&&pw.equals("test")){
-                    Intent intent = new Intent(UserLoginActivity.this, UserInfoFragment.class);
+                    Intent intent = new Intent(UserLoginActivity.this, UserMainActivity.class);
                     startActivity(intent);
                     Toast.makeText(UserLoginActivity.this, "로그인 완료", Toast.LENGTH_SHORT).show();
                 }else {
