@@ -124,8 +124,8 @@ public class MenuModActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Toast.makeText(MenuModActivity.this, "메뉴가 수정됐습니다.", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(MenuModActivity.this, UserActivity.class);
-                        startActivity(intent);
+//                        Intent intent = new Intent(MenuModActivity.this, UserActivity.class);
+//                        startActivity(intent);
                         finish();
                     }
                 })
