@@ -16,6 +16,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".controller.advertiser.HistoryCouponActivity"
+            android:exported="false" />
+        <activity
             android:name=".controller.advertiser.MenuModActivity"
             android:exported="false" />
         <activity
@@ -57,6 +60,7 @@
         <activity
             android:name=".controller.advertiser.MainActivity"
             android:exported="false" />
+
         <activity
             android:name=".controller.common.SplashActivity"
             android:exported="true">
