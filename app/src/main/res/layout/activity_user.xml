@@ -178,7 +178,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/scdream5"
-        android:text="코롬방"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/tvId"
         app:layout_constraintTop_toBottomOf="@+id/tvId" />
