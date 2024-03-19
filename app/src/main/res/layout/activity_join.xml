@@ -8,7 +8,7 @@
     tools:context=".controller.advertiser.JoinActivity">
 
     <EditText
-        android:id="@+id/etJoinId"
+        android:id="@+id/etJoinUserId"
         android:layout_width="0dp"
         android:layout_height="45dp"
         android:layout_marginTop="18dp"
@@ -20,13 +20,13 @@
         android:outlineProvider="paddedBounds"
         android:paddingLeft="10dp"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/etJoinName"
+        app:layout_constraintEnd_toEndOf="@+id/etJoinUserName"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/etJoinName"
-        app:layout_constraintTop_toBottomOf="@+id/etJoinName" />
+        app:layout_constraintStart_toStartOf="@+id/etJoinUserName"
+        app:layout_constraintTop_toBottomOf="@+id/etJoinUserName" />
 
     <EditText
-        android:id="@+id/etJoinPw"
+        android:id="@+id/etJoinUserPw"
         android:layout_width="0dp"
         android:layout_height="45dp"
         android:layout_marginTop="50dp"
@@ -38,13 +38,13 @@
         android:outlineProvider="paddedBounds"
         android:paddingLeft="10dp"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/etJoinId"
+        app:layout_constraintEnd_toEndOf="@+id/etJoinUserId"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/etJoinId"
-        app:layout_constraintTop_toBottomOf="@+id/etJoinId" />
+        app:layout_constraintStart_toStartOf="@+id/etJoinUserId"
+        app:layout_constraintTop_toBottomOf="@+id/etJoinUserId" />
 
     <EditText
-        android:id="@+id/etJoinName"
+        android:id="@+id/etJoinUserName"
         android:layout_width="0dp"
         android:layout_height="45dp"
         android:layout_marginLeft="25dp"
@@ -63,7 +63,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <EditText
-        android:id="@+id/etJoinEmail"
+        android:id="@+id/etJoinUserEmail"
         android:layout_width="0dp"
         android:layout_height="45dp"
         android:layout_marginTop="18dp"
@@ -75,9 +75,9 @@
         android:outlineProvider="paddedBounds"
         android:paddingLeft="10dp"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/etJoinPw"
-        app:layout_constraintStart_toStartOf="@+id/etJoinPw"
-        app:layout_constraintTop_toBottomOf="@+id/etJoinPw" />
+        app:layout_constraintEnd_toEndOf="@+id/etJoinUserPw"
+        app:layout_constraintStart_toStartOf="@+id/etJoinUserPw"
+        app:layout_constraintTop_toBottomOf="@+id/etJoinUserPw" />
 
     <Button
         android:id="@+id/btnJoin"
@@ -98,7 +98,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etJoinEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/etJoinUserEmail" />
 
     <TextView
         android:id="@+id/textView5"
@@ -122,9 +122,9 @@
         android:text="중복검사"
         android:textSize="16sp"
         app:cornerRadius="12dp"
-        app:layout_constraintBottom_toTopOf="@+id/etJoinPw"
-        app:layout_constraintStart_toStartOf="@+id/etJoinId"
-        app:layout_constraintTop_toBottomOf="@+id/etJoinId"
+        app:layout_constraintBottom_toTopOf="@+id/etJoinUserPw"
+        app:layout_constraintStart_toStartOf="@+id/etJoinUserId"
+        app:layout_constraintTop_toBottomOf="@+id/etJoinUserId"
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
@@ -132,12 +132,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:text="중복검사하세요!"
         android:textColor="#808080"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/etJoinPw"
+        app:layout_constraintBottom_toTopOf="@+id/etJoinUserPw"
         app:layout_constraintStart_toEndOf="@+id/btnIdCheck"
-        app:layout_constraintTop_toBottomOf="@+id/etJoinId" />
+        app:layout_constraintTop_toBottomOf="@+id/etJoinUserId" />
 
     <ImageView
         android:id="@+id/imageView"

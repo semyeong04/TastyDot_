@@ -3,6 +3,7 @@ package com.project.project3.controller.advertiser;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -31,48 +32,32 @@ public class MainActivity extends AppCompatActivity {
     EditText etPw;
     TextView creatAc;
     static RequestQueue requestQueue;
+    String id;
     String userName;
-
+    String userId;
+    String userPw;
+    String userEmail;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        btnLogin = findViewById(R.id.btnLogin);
+        btnLogin = findViewById(R.id.btnUserLogin);
         etId= findViewById(R.id.etId);
         etPw= findViewById(R.id.etPw);
         creatAc = findViewById(R.id.creatAc);
-
         // 로그인 버튼 클릭시
         btnLogin.setOnClickListener( v -> {
-            String id = etId.getText().toString();
-            String pw = etPw.getText().toString();
-
             loginRequest();
-
-            if (userName != null){
-                Toast.makeText(this,"로그인 완료",Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(this, UserActivity.class);
-                intent.putExtra("userName", userName);
-                startActivity(intent);
-
-            }else {
-                Toast.makeText(this, "아이디 또는 비밀번호가 틀렸습니다.", Toast.LENGTH_SHORT).show();
-            }
-
         });
-
         // 계정 생성
         creatAc.setOnClickListener(v -> {
             Intent intent = new Intent(this, JoinActivity.class);
             startActivity(intent);
         });
-
         if (requestQueue == null) {
             requestQueue = Volley.newRequestQueue(getApplicationContext());
         }
-
     }
-
     public void loginRequest(){
         String url = "http://192.168.219.101:8081/api/login";
         StringRequest request = new StringRequest(Request.Method.POST, url,
@@ -81,27 +66,37 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         try {
                             JSONObject jsonResponse = new JSONObject(response);
-                            String userId = jsonResponse.getString("userId");
-                            String userPw = jsonResponse.getString("userPw");
+                             id = jsonResponse.getString("id");
+                             userId = jsonResponse.getString("userId");
                              userName = jsonResponse.getString("userName");
-                            String userEmail = jsonResponse.getString("userEmail");
-                            // 파싱한 데이터를 활용하여 필요한 작업을 수행합니다.
-                            // 예: TextView에 출력
+                             userEmail = jsonResponse.getString("userEmail");
 
+                            if (userName != null){
+                                Toast.makeText(MainActivity.this,"로그인 완료",Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(MainActivity.this, UserActivity.class);
+                                // 로그인 성공시
+                                intent.putExtra("id", id);
+                                intent.putExtra("userId", userId);
+                                intent.putExtra("userName", userName);
+                                intent.putExtra("userEmail", userEmail);
+
+                                Log.d("MainActivity", "userName: " + userName);
+
+                                startActivity(intent);
+                            }else {
+                                Toast.makeText(MainActivity.this, "아이디 또는 비밀번호가 틀렸습니다.", Toast.LENGTH_SHORT).show();
+                            }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-//                        println(response);
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Log.d("에러",error.getMessage());
-
                     }
                 }
-
         ) {
 
             @Override
@@ -129,9 +124,5 @@ public class MainActivity extends AppCompatActivity {
         };
         request.setShouldCache(false);
         requestQueue.add(request);
-
     }
-
-
-
 }

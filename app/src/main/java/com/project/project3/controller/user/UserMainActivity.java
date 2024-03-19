@@ -1,37 +1,71 @@
 package com.project.project3.controller.user;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.ImageView;
 
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 import com.project.project3.R;
 
 public class UserMainActivity extends AppCompatActivity {
-
-    private EditText search_text;
-    private ImageView search_img;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_main);
 
-        // EditText와 ImageView를 레이아웃에서 가져옴
-        search_text = findViewById(R.id.search_text);
-        search_img = findViewById(R.id.search_img);
+        BottomNavigationView bnv = findViewById(R.id.bvMain);
+        FrameLayout fl = findViewById(R.id.fl);
 
-        // EditText에 포커스를 받았을 때 imageView19를 숨김
-        search_text.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        getSupportFragmentManager().beginTransaction().replace(
+                // 1) 어디에
+                R.id.fl,
+                // 2) 어떤 부분화면으로
+                new UserInfoFragment()
+        ).commit();
+
+        // bnv에 어떤 항목을 클릭했는지 구분한 다음
+        // 해당 Fragment가 FrameLayout에 갈아 끼워질 수 있도록 만들자
+        bnv.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (hasFocus) {
-                    search_img.setVisibility(View.INVISIBLE);
-                } else {
-                    search_img.setVisibility(View.VISIBLE);
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                // itme  : 내가 클릭한 항목에 대한 정보
+                // 정보 : 속성,id,title,icon...
+                // item.getItemId() : 항목의 id값을 가져오는 방법
+                int itemId = item.getItemId();
+                if(itemId == R.id.bnv_map){
+                    getSupportFragmentManager().beginTransaction().replace(
+                            R.id.fl,
+                            new MapFragment()
+                    ).commit();
+                } else if (itemId == R.id.bnv_search) {
+
+                } else if (itemId == R.id.bnv_home) {
+                    getSupportFragmentManager().beginTransaction().replace(
+                            R.id.fl,
+                            new UserInfoFragment()
+                    ).commit();
+                } else if (itemId == R.id.bnv_coupon) {
+
+                } else if (itemId == R.id.bnv_info) {
+
                 }
+
+                // 항목에 대한 클릭 이벤트를 감지
+                // false : 클릭한번하고 이벤트가 계속 된다고 생각함
+                // true : 클릭 후 이벤트 종료
+                return true;
             }
         });
+
     }
+
+
 }

@@ -24,12 +24,13 @@
         android:layout_width="300dp"
         android:layout_height="40dp"
         android:layout_marginTop="76dp"
-        android:background="@drawable/text_circle"
+        android:background="@drawable/edge_menucolor"
         android:elevation="10dp"
         android:ems="10"
         android:hint=" 아이디"
         android:inputType="text"
         android:outlineProvider="paddedBounds"
+        android:paddingLeft="10dp"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
@@ -41,12 +42,13 @@
         android:layout_width="300dp"
         android:layout_height="40dp"
         android:layout_marginTop="20dp"
-        android:background="@drawable/text_circle"
+        android:background="@drawable/edge_menucolor"
         android:elevation="10dp"
         android:ems="10"
         android:hint=" 비밀번호"
         android:inputType="textPassword"
         android:outlineProvider="paddedBounds"
+        android:paddingLeft="10dp"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@+id/etId"
         app:layout_constraintHorizontal_bias="0.0"
@@ -67,10 +69,10 @@
         app:layout_constraintTop_toBottomOf="@+id/etPw" />
 
     <Button
-        android:id="@+id/btnLogin"
+        android:id="@+id/btnUserLogin"
         android:layout_width="200dp"
         android:layout_height="60dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="80dp"
         android:backgroundTint="#38B8E5"
         android:insetTop="0dp"
         android:insetBottom="0dp"
@@ -90,8 +92,8 @@
         android:text="맛있닷이 처음이신가요? >"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/btnLogin"
-        app:layout_constraintStart_toStartOf="@+id/btnLogin"
-        app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
+        app:layout_constraintEnd_toEndOf="@+id/btnUserLogin"
+        app:layout_constraintStart_toStartOf="@+id/btnUserLogin"
+        app:layout_constraintTop_toBottomOf="@+id/btnUserLogin" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

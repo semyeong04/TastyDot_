@@ -43,10 +43,10 @@ public class JoinActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_join);
-        joinId = findViewById(R.id.etJoinId);
-        joinPw = findViewById(R.id.etJoinPw);
-        joinName = findViewById(R.id.etJoinName);
-        joinEmail = findViewById(R.id.etJoinEmail);
+        joinId = findViewById(R.id.etJoinUserId);
+        joinPw = findViewById(R.id.etJoinUserPw);
+        joinName = findViewById(R.id.etJoinUserName);
+        joinEmail = findViewById(R.id.etJoinUserEmail);
          btnJoin = findViewById(R.id.btnJoin);
          tvIdCheck = findViewById(R.id.tvIdCheck);
          btnIdCheck = findViewById(R.id.btnIdCheck);

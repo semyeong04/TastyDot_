@@ -4,245 +4,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
     tools:context=".controller.user.UserMainActivity">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.89" />
-
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:backgroundTint="#330AA8E0"
+        android:id="@+id/bvMain"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:backgroundTint="#33EE99C2"
         app:itemIconTint="@drawable/bnv_color"
         app:itemTextColor="@drawable/bnv_color"
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline3"
-        app:menu="@menu/menu_adv" />
+        app:layout_constraintTop_toTopOf="@+id/guideline9"
+        app:menu="@menu/menu_adv">
 
-    <ScrollView
-        android:id="@+id/scrollView3"
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.9" />
+
+    <FrameLayout
+        android:id="@+id/fl"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline3"
+        app:layout_constraintBottom_toTopOf="@+id/bvMain"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/tastydot"
-                    android:layout_width="60dp"
-                    android:layout_height="45dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="20dp"
-                    app:srcCompat="@drawable/tastydot" />
-
-                <FrameLayout
-                    android:layout_width="290dp"
-                    android:layout_height="match_parent">
-
-                    <EditText
-                        android:id="@+id/search_text"
-                        android:layout_width="270dp"
-                        android:layout_height="40dp"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/edge_bluecolor"
-                        android:ems="10"
-                        android:inputType="text" />
-
-                    <ImageView
-                        android:id="@+id/search_img"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_marginLeft="250dp"
-                        android:layout_marginTop="30dp"
-                        app:srcCompat="@drawable/icon_search" />
-
-                </FrameLayout>
-
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/textView14"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:text="음식 태그"
-                android:textSize="20sp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/tag_img_kr"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/korean_food" />
-
-                <ImageView
-                    android:id="@+id/tag_img_ch"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/chinese_food" />
-
-                <ImageView
-                    android:id="@+id/tag_img_ja"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/japanese_food" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/tag_img_wes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/italy_food" />
-
-                <ImageView
-                    android:id="@+id/tag_img_cafe"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/dessert_food" />
-
-                <ImageView
-                    android:id="@+id/tag_img_snack"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/snack_food" />
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/textView16"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:text="추천 음식점"
-                android:textSize="20sp" />
-
-            <ImageView
-                android:id="@+id/rec_img1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                tools:srcCompat="@tools:sample/avatars" />
-
-            <TextView
-                android:id="@+id/rec_name1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="1번음식점" />
-
-            <TextView
-                android:id="@+id/rec_add1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="1번주소" />
-
-            <TextView
-                android:id="@+id/rec_review1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="1번추천리뷰수" />
-
-            <ImageView
-                android:id="@+id/rec_img2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                tools:srcCompat="@tools:sample/avatars" />
-
-            <TextView
-                android:id="@+id/rec_name2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="2번음식점" />
-
-            <TextView
-                android:id="@+id/rec_add2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="2번주소" />
-
-            <TextView
-                android:id="@+id/rec_review2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="2번추천리뷰수" />
-
-            <ImageView
-                android:id="@+id/rec_img3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                tools:srcCompat="@tools:sample/avatars" />
-
-            <TextView
-                android:id="@+id/rec_name3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="3번음식점" />
-
-            <TextView
-                android:id="@+id/rec_add3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="3번주소" />
-
-            <TextView
-                android:id="@+id/rec_review3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginBottom="20dp"
-                android:text="3번추천리뷰수" />
-
-        </LinearLayout>
-    </ScrollView>
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
