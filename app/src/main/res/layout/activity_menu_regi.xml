@@ -63,14 +63,15 @@
         android:id="@+id/textView28"
         android:layout_width="100dp"
         android:layout_height="30dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/edge"
         android:gravity="center|left"
         android:outlineProvider="paddedBounds"
         android:paddingLeft="10dp"
         android:text="메뉴 사진"
         android:textSize="20sp"
-        tools:layout_editor_absoluteX="25dp"
-        tools:layout_editor_absoluteY="283dp" />
+        app:layout_constraintStart_toStartOf="@+id/textView26"
+        app:layout_constraintTop_toBottomOf="@+id/textView26" />
 
     <EditText
         android:id="@+id/etMenuName"
@@ -93,7 +94,7 @@
         android:layout_width="100dp"
         android:layout_height="30dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="50dp"
         android:background="@drawable/edge"
         android:gravity="center|left"
         android:outlineProvider="paddedBounds"
@@ -147,12 +148,12 @@
         android:inputType="number"
         android:paddingLeft="10dp"
         android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@+id/etMenu4"
+        app:layout_constraintEnd_toEndOf="@+id/etMenuDesc"
         app:layout_constraintStart_toEndOf="@+id/textView9"
         app:layout_constraintTop_toTopOf="@+id/textView9" />
 
     <EditText
-        android:id="@+id/etMenu4"
+        android:id="@+id/etMenuDesc"
         android:layout_width="0dp"
         android:layout_height="30dp"
         android:layout_marginStart="16dp"
@@ -170,11 +171,11 @@
         android:id="@+id/imgMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="44dp"
+        android:layout_marginStart="60dp"
         android:padding="1dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/camera"
-        tools:layout_editor_absoluteY="305dp" />
+        app:layout_constraintStart_toEndOf="@+id/textView28"
+        app:layout_constraintTop_toTopOf="@+id/textView28"
+        app:srcCompat="@drawable/camera" />
 
     <ImageView
         android:id="@+id/imginfo3"
