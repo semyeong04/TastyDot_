@@ -82,7 +82,7 @@ public class UserActivity extends AppCompatActivity {
         // 메뉴 수정 페이지 이동
         tvMenuMod.setOnClickListener(v -> {
             intent = new Intent(this, MenuModActivity.class);
-
+            intent.putExtra("storeIdx", storeIdx);
             startActivity(intent);
         });
 
@@ -90,6 +90,8 @@ public class UserActivity extends AppCompatActivity {
         // 쿠폰 발급 페이지 이동
         tvAddCoupon.setOnClickListener(v->{
             intent = new Intent(this, AddCouponActivity.class);
+            intent.putExtra("storeIdx", storeIdx);
+
             startActivity(intent);
         });
 
@@ -97,12 +99,16 @@ public class UserActivity extends AppCompatActivity {
         // 쿠폰 현황 페이지 이동
         tvNowCoupon.setOnClickListener(v->{
             intent = new Intent(this, CheckCouponActivity.class);
+            intent.putExtra("storeIdx", storeIdx);
+
             startActivity(intent);
         });
 
         // 이전 쿠폰 내역 페이지 이동
         tvUsedCoupon.setOnClickListener(v -> {
             intent = new Intent(this, HistoryCouponActivity.class);
+            intent.putExtra("storeIdx", storeIdx);
+
             startActivity(intent);
         });
 

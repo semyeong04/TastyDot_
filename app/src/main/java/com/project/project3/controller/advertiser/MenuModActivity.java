@@ -27,18 +27,27 @@ import com.project.project3.R;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 
 
 public class MenuModActivity extends AppCompatActivity {
 
     String[] items = {"카리나", "윈터", "닝닝", "지젤"};
+
+    ArrayList<String> itemList = new ArrayList<>() ;
     Intent intent;
+    int storeIdx;
+
     ImageView imgMenu;
     ActivityResultLauncher<Intent> startActivityResult;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_mod);
+
+        intent = getIntent();
+        storeIdx = intent.getIntExtra("storeIdx", 1); // 가게 식별자 가져오기
+        // getItems();
 
         Spinner spinner = findViewById(R.id.spNowMenu);
         // ArrayAdapter를 사용하여 스피너와 아이템을 연결합니다.
@@ -157,4 +166,8 @@ public class MenuModActivity extends AppCompatActivity {
         AlertDialog msgDlg = msgBuilder.create();
         msgDlg.show();
     }
+
+
+
+
 }
