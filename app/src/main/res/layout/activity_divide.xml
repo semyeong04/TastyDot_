@@ -6,53 +6,60 @@
     android:layout_height="match_parent"
     tools:context=".controller.common.DivideActivity">
 
-    <RadioButton
-        android:id="@+id/radioButton"
-        android:layout_width="wrap_content"
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="100dp"
-        android:buttonTint="#0AA8E0"
-        android:buttonTintMode="multiply"
-        android:fontFamily="@font/scdream3"
-        android:text="사용자"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView21" />
-
-    <RadioButton
-        android:id="@+id/radioButton2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="100dp"
-        android:buttonTint="#EE99C2"
-        android:buttonTintMode="multiply"
-        android:fontFamily="@font/scdream3"
-        android:text="광고주"
-        android:textSize="16sp"
+        android:layout_marginTop="80dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView21" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView21">
+
+        <RadioButton
+            android:id="@+id/rdAdver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:layout_weight="0"
+            android:buttonTintMode="multiply"
+            android:fontFamily="@font/scdream3"
+            android:text="광고주"
+            android:textSize="16sp" />
+
+        <RadioButton
+            android:id="@+id/rdUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="0"
+            android:buttonTintMode="multiply"
+            android:fontFamily="@font/scdream3"
+            android:text="사용자"
+            android:textSize="16sp" />
+    </RadioGroup>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnAccess"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="50dp"
-        android:layout_marginTop="208dp"
+        android:layout_marginTop="250dp"
         android:layout_marginRight="50dp"
         android:backgroundTint="#EE99C2"
         android:fontFamily="@font/scdream3"
         android:insetTop="0dp"
         android:insetBottom="0dp"
-        android:text="로그인"
+        android:text="접속하기"
         android:textAlignment="center"
         android:textSize="24sp"
         app:cornerRadius="12dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintHorizontal_bias="0.363"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioButton" />
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
     <ImageView
         android:id="@+id/imageView10"
@@ -71,22 +78,10 @@
         android:layout_marginTop="56dp"
         android:fontFamily="@font/scdream5"
         android:text="누구로 접속하시겠어요?"
-        android:textSize="20sp"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView10" />
-
-    <TextView
-        android:id="@+id/textView25"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:text="아직 계정이 없으신가요? >"
-        android:textColor="#8F000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
