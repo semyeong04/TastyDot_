@@ -1,7 +1,9 @@
 package com.project.project3.controller.user;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -9,8 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.project.project3.R;
+import com.project.project3.controller.advertiser.MenuRegiActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -64,22 +68,17 @@ public class UserInfoFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_user_info,container,false);
 
-        ImageView imgLogout = view.findViewById(R.id.imgLogout);
-        TextView tvLogout = view.findViewById(R.id.tvLogout);
+
+        TextView tvUserLogout = view.findViewById(R.id.tvUserLogout);
         // 로그아웃 기능 구현 부탁
-        tvLogout.setOnClickListener(new View.OnClickListener() {
+        tvUserLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                showDialog();
                 logout();
             }
         });
 
-        imgLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                logout();
-            }
-        });
 
 
         return inflater.inflate(R.layout.fragment_user_info, container, false);
@@ -91,5 +90,27 @@ public class UserInfoFragment extends Fragment {
     // 로그아웃 메서드
     private void logout(){
 
+    }
+
+    void showDialog() {
+        AlertDialog.Builder msgBuilder = new AlertDialog.Builder(getActivity())
+                .setTitle("로그아웃")
+                .setMessage("로그아웃 하시겠습니까?")
+                .setPositiveButton("네", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(getActivity(), "로그아웃됐습니다.", Toast.LENGTH_SHORT).show();
+                    }
+                })
+
+                .setNegativeButton("아니요", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(getActivity(), "로그아웃 하지 않으셨습니다.", Toast.LENGTH_SHORT).show();
+                    }
+                });
+        AlertDialog msgDlg = msgBuilder.create();
+        msgDlg.show();
     }
 }

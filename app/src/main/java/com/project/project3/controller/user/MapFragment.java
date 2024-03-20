@@ -9,7 +9,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import com.kakao.util.maps.helper.Utility;
@@ -19,7 +23,19 @@ import net.daum.mf.map.api.MapPoint;
 import net.daum.mf.map.api.MapView;
 import com.project.project3.R;
 
-public class MapFragment extends Fragment {
+import java.util.zip.Inflater;
+
+public class MapFragment extends Fragment implements MapView.POIItemEventListener, MapView.MapViewEventListener{
+
+    private CardView cardView;
+    private TextView tvCardStore;
+    private TextView tvCardAdress;
+    private TextView tvCardScore;
+    private TextView tvCardReviews;
+    private ImageView imgCardimg1;
+    private ImageView imgCardimg2;
+    private ImageView imgCardimg3;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -33,7 +49,6 @@ public class MapFragment extends Fragment {
     public MapFragment() {
         // Required empty public constructor
     }
-
 
     // TODO: Rename and change types and number of parameters
     public static MapFragment newInstance(String param1, String param2) {
@@ -54,13 +69,14 @@ public class MapFragment extends Fragment {
         }
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_map, container, false);
 
-        MapView mapView = new MapView(getContext());
+        MapView mapView = view.findViewById(R.id.mv);
 
         // 맵뷰 시작 위도,경도
         mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(34.808258, 126.390906), true);
@@ -74,12 +90,101 @@ public class MapFragment extends Fragment {
         marker.setMapPoint(MARKER_POINT);
         marker.setMarkerType(MapPOIItem.MarkerType.BluePin); // 기본으로 제공하는 BluePin 마커 모양.
         marker.setSelectedMarkerType(MapPOIItem.MarkerType.RedPin); // 마커를 클릭했을때, 기본으로 제공하는 RedPin 마커 모양.
-
         mapView.addPOIItem(marker);
-        ViewGroup mapViewContainer = view.findViewById(R.id.mv);
-        mapViewContainer.addView(mapView);
+
+        //카카오맵, 마커 이벤트 연결
+        mapView.setMapViewEventListener(this);
+        mapView.setPOIItemEventListener(this);
+
+        cardView = view.findViewById(R.id.cardvDetail);
+        tvCardStore = view.findViewById(R.id.tvCardStore);
+        tvCardAdress = view.findViewById(R.id.tvCardAdress);
+        tvCardScore = view.findViewById(R.id.tvCardScore);
+        tvCardReviews = view.findViewById(R.id.tvCardReviews);
+        imgCardimg1 = view.findViewById(R.id.imgCardimg1);
+        imgCardimg2 = view.findViewById(R.id.imgCardimg2);
+        imgCardimg3 = view.findViewById(R.id.imgCardimg3);
+
+        // 카드뷰 초기에 숨기기
+        cardView.setVisibility(View.GONE);
 
         return view;
     }
+
+    // POI(마커) 관련 이벤트
+    @Override
+    public void onPOIItemSelected(MapView mapView, MapPOIItem mapPOIItem) {
+        cardView.setVisibility(View.VISIBLE);
+        tvCardStore.setText(mapPOIItem.getItemName());
+        tvCardAdress.setText("주소 정보");
+        tvCardScore.setText("평점 정보");
+        tvCardReviews.setText("리뷰 정보");
+    }
+
+    @Override
+    public void onCalloutBalloonOfPOIItemTouched(MapView mapView, MapPOIItem mapPOIItem) {
+    }
+
+    @Override
+    public void onCalloutBalloonOfPOIItemTouched(MapView mapView, MapPOIItem mapPOIItem, MapPOIItem.CalloutBalloonButtonType calloutBalloonButtonType) {
+
+    }
+
+    @Override
+    public void onDraggablePOIItemMoved(MapView mapView, MapPOIItem mapPOIItem, MapPoint mapPoint) {
+
+    }
+
+    //MapView 관련 이벤트
+    @Override
+    public void onMapViewInitialized(MapView mapView) {
+
+    }
+
+    @Override
+    public void onMapViewCenterPointMoved(MapView mapView, MapPoint mapPoint) {
+
+    }
+
+    @Override
+    public void onMapViewZoomLevelChanged(MapView mapView, int i) {
+
+    }
+
+    @Override
+    public void onMapViewSingleTapped(MapView mapView, MapPoint mapPoint) {
+        cardView.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void onMapViewDoubleTapped(MapView mapView, MapPoint mapPoint) {
+
+    }
+
+    @Override
+    public void onMapViewLongPressed(MapView mapView, MapPoint mapPoint) {
+
+    }
+
+    @Override
+    public void onMapViewDragStarted(MapView mapView, MapPoint mapPoint) {
+
+    }
+
+    @Override
+    public void onMapViewDragEnded(MapView mapView, MapPoint mapPoint) {
+
+    }
+
+    @Override
+    public void onMapViewMoveFinished(MapView mapView, MapPoint mapPoint) {
+
+    }
+
+
+
+
+
+
 
 }

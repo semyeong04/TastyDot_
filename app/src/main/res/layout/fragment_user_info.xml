@@ -12,11 +12,12 @@
 
         <ImageView
             android:id="@+id/imageView7"
-            android:layout_width="60dp"
-            android:layout_height="45dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="4dp"
+            android:layout_width="80dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
             android:src="@drawable/tastydot"
+            app:layout_constraintBottom_toTopOf="@+id/guideline3"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,28 +27,6 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.10015175" />
-
-        <ImageView
-            android:id="@+id/imgLogout"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="5dp"
-            app:layout_constraintBottom_toTopOf="@+id/tvLogout"
-            app:layout_constraintEnd_toEndOf="@+id/tvLogout"
-            app:layout_constraintHorizontal_bias="0.681"
-            app:layout_constraintStart_toStartOf="@+id/tvLogout"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/icon_logout" />
-
-        <TextView
-            android:id="@+id/tvLogout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:text="로그아웃"
-            app:layout_constraintBottom_toTopOf="@+id/guideline3"
-            app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
             android:id="@+id/textView14"
@@ -90,6 +69,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:fontFamily="@font/nanumsquareacb"
             android:text="쿠폰함"
             app:layout_constraintEnd_toEndOf="@+id/imageView16"
             app:layout_constraintHorizontal_bias="0.509"
@@ -112,6 +92,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:fontFamily="@font/nanumsquareacb"
             android:text="방문 기록"
             app:layout_constraintEnd_toEndOf="@+id/imageView17"
             app:layout_constraintStart_toStartOf="@+id/imageView17"
@@ -144,10 +125,11 @@
             android:layout_marginTop="3dp"
             android:layout_marginEnd="25dp"
             android:background="@drawable/edge"
-            android:fontFamily="@font/scdream4"
+            android:fontFamily="@font/nanumsquareb"
             android:gravity="center|left"
             android:paddingLeft="10dp"
             android:text="쿠폰 사용내역"
+            android:textColor="#80000000"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -161,10 +143,11 @@
             android:layout_marginTop="3dp"
             android:layout_marginEnd="25dp"
             android:background="@drawable/edge"
-            android:fontFamily="@font/scdream4"
+            android:fontFamily="@font/nanumsquareb"
             android:gravity="center|left"
             android:paddingLeft="10dp"
             android:text="방문 기록"
+            android:textColor="#80000000"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvUserUsedCoupon" />
@@ -177,10 +160,11 @@
             android:layout_marginTop="3dp"
             android:layout_marginEnd="25dp"
             android:background="@drawable/edge"
-            android:fontFamily="@font/scdream4"
+            android:fontFamily="@font/nanumsquareb"
             android:gravity="center|left"
             android:paddingLeft="10dp"
             android:text="개인정보 변경"
+            android:textColor="#80000000"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -192,6 +176,23 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_begin="263dp" />
+
+        <TextView
+            android:id="@+id/tvUserLogout"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="25dp"
+            android:background="@drawable/edge"
+            android:fontFamily="@font/nanumsquareacb"
+            android:gravity="center|left"
+            android:paddingLeft="10dp"
+            android:text="로그아웃"
+            android:textColor="#80000000"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView32" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
