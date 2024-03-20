@@ -89,8 +89,24 @@ public class UserSearchFragment extends Fragment {
 
         // 리스트 아이템 데이터 생성
         ArrayList<ListItem> items = new ArrayList<>();
-        items.add(new ListItem("솔마을 과자점", "전남 목포시", 4.9, 500));
+
         // 필요한 만큼 데이터를 추가할 수 있습니다.
+        // 아래는 예시
+        items.add(new ListItem("솔마을 과자점", "전남 목포시", 4.9, 500));
+        items.add(new ListItem("솔마을 과자점1", "전남 목포시1", 4.8, 499));
+        items.add(new ListItem("솔마을 과자점2", "전남 목포시2", 4.7, 498));
+        items.add(new ListItem("솔마을 과자점3", "전남 목포시3", 4.6, 497));
+        items.add(new ListItem("솔마을 과자점4", "전남 목포시4", 4.5, 496));
+        items.add(new ListItem("솔마을 과자점", "전남 목포시", 4.9, 500));
+        items.add(new ListItem("솔마을 과자점1", "전남 목포시1", 4.8, 499));
+        items.add(new ListItem("솔마을 과자점2", "전남 목포시2", 4.7, 498));
+        items.add(new ListItem("솔마을 과자점3", "전남 목포시3", 4.6, 497));
+        items.add(new ListItem("솔마을 과자점4", "전남 목포시4", 4.5, 496));
+        items.add(new ListItem("솔마을 과자점", "전남 목포시", 4.9, 500));
+        items.add(new ListItem("솔마을 과자점1", "전남 목포시1", 4.8, 499));
+        items.add(new ListItem("솔마을 과자점2", "전남 목포시2", 4.7, 498));
+        items.add(new ListItem("솔마을 과자점3", "전남 목포시3", 4.6, 497));
+        items.add(new ListItem("솔마을 과자점4", "전남 목포시4", 4.5, 496));
 
         // 어댑터 생성 및 리스트뷰에 설정
         ListAdapter adapter = new ListAdapter(getContext(), items);

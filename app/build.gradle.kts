@@ -15,6 +15,7 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
+        ndk.abiFilters.add("x86") // x86 ABI 추가
         ndk.abiFilters.add("arm64-v8a")
         ndk.abiFilters.add("armeabi-v7a")
         ndk.abiFilters.add("armeabi")
@@ -50,7 +51,8 @@ dependencies {
     annotationProcessor ("com.github.bumptech.glide:compiler:4.12.0")
 
     implementation("com.kakao.maps.open:android:2.9.5")
-
+    implementation("androidx.viewpager2:viewpager2:1.0.0")
+    implementation("me.relex:circleindicator:2.1.6")
     implementation("com.android.volley:volley:1.2.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")
