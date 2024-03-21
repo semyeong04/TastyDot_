@@ -6,11 +6,17 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.project.project3.R;
+
+import java.util.Timer;
+import java.util.TimerTask;
+
 import me.relex.circleindicator.CircleIndicator3;
 
 /**
@@ -35,6 +41,22 @@ public class UserHomeFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    // Delay time in milliseconds
+    private static final long DELAY_MS = 3000;
+    // Time between sliding in milliseconds
+    private static final long PERIOD_MS = 3000;
+
+    private Timer timer;
+    private Handler handler = new Handler(Looper.getMainLooper());
+    private Runnable runnable = new Runnable() {
+        public void run() {
+            if (mPager.getCurrentItem() < num_page - 1) {
+                mPager.setCurrentItem(mPager.getCurrentItem() + 1);
+            } else {
+                mPager.setCurrentItem(0);
+            }
+        }
+    };
 
     public UserHomeFragment() {
         // Required empty public constructor
@@ -72,6 +94,44 @@ public class UserHomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_user_home, container, false);
+        View view = inflater.inflate(R.layout.fragment_user_home, container, false);
+
+        // Initialize ViewPager2
+        mPager = view.findViewById(R.id.viewpager);
+        pagerAdapter = new MyAdapter(requireActivity(), num_page); // MyAdapter는 사용자가 직접 작성한 것으로 대체해야 합니다.
+        mPager.setAdapter(pagerAdapter);
+
+        // Initialize CircleIndicator3
+        mIndicator = view.findViewById(R.id.indicator);
+        mIndicator.setViewPager(mPager);
+        mIndicator.createIndicators(num_page, 0);
+
+        // Start auto sliding
+        startAutoSlide();
+
+        return view;
+    }
+    public void onDestroyView() {
+        super.onDestroyView();
+        // Stop auto sliding when fragment is destroyed
+        stopAutoSlide();
+    }
+    private void startAutoSlide() {
+        if (timer == null) {
+            timer = new Timer();
+            timer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    handler.post(runnable);
+                }
+            }, DELAY_MS, PERIOD_MS);
+        }
+    }
+
+    private void stopAutoSlide() {
+        if (timer != null) {
+            timer.cancel();
+            timer = null;
+        }
     }
 }

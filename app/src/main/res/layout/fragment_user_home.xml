@@ -13,22 +13,35 @@
 
         <ImageView
             android:id="@+id/imageView22"
-            android:layout_width="60dp"
-            android:layout_height="45dp"
-            android:layout_marginLeft="4dp"
-            android:layout_marginTop="4dp"
+            android:layout_width="80dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
             android:src="@drawable/tastydot"
+            app:layout_constraintBottom_toTopOf="@+id/guideline17"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/viewPager2"
+            android:id="@+id/viewpager"
             android:layout_width="409dp"
             android:layout_height="320dp"
             android:layout_marginTop="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView22" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView22" >
+
+        </androidx.viewpager2.widget.ViewPager2>
+
+        <me.relex.circleindicator.CircleIndicator3
+            android:id="@+id/indicator"
+            android:layout_width="50dp"
+            android:layout_height="10dp"
+            android:layout_marginTop="200dp"
+            app:layout_constraintBottom_toBottomOf="@+id/viewpager"
+            app:layout_constraintEnd_toEndOf="@+id/viewpager"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/viewpager" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline17"
@@ -45,7 +58,7 @@
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/viewPager2">
+            app:layout_constraintTop_toBottomOf="@+id/viewpager">
 
             <ImageView
                 android:id="@+id/tag_img_kr"

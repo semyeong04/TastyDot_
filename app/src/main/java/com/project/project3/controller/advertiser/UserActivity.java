@@ -3,8 +3,13 @@ package com.project.project3.controller.advertiser;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.ImageView;
@@ -21,15 +26,22 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.kakao.util.maps.helper.Utility;
 import com.project.project3.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
 
+
 public class UserActivity extends AppCompatActivity {
+
+
+
     Intent intent;
     String id;
     String userId;
@@ -43,10 +55,16 @@ public class UserActivity extends AppCompatActivity {
     static RequestQueue requestQueue;
     private RequestManager glide;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
+
+
+
+
 
         // 사용자의 정보를 불러와 변수에 저장
         intent = getIntent();
