@@ -49,7 +49,7 @@
         android:fontFamily="@font/scdream6"
         android:gravity="center"
         android:outlineProvider="paddedBounds"
-        android:text="남은 장수"
+        android:text="사용 장수"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView37"
         app:layout_constraintStart_toEndOf="@+id/textView37"
@@ -278,7 +278,7 @@
         android:fontFamily="@font/scdream6"
         android:gravity="center"
         android:outlineProvider="paddedBounds"
-        android:text="사용 장수"
+        android:text="남은 장수"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
