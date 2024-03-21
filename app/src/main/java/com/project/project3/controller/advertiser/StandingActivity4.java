@@ -14,5 +14,13 @@ public class StandingActivity4 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_standing4);
+
+        findViewById(R.id.btn_quit1).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(StandingActivity4.this, StandingActivity1.class);
+                startActivity(intent);
+            }
+        });
     };
 }
