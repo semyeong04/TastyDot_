@@ -26,7 +26,7 @@ import com.project.project3.R;
 import java.util.zip.Inflater;
 
 public class MapFragment extends Fragment implements MapView.POIItemEventListener, MapView.MapViewEventListener{
-
+    private MapPOIItem marker;
     private CardView cardView;
     private TextView tvCardStore;
     private TextView tvCardAdress;
@@ -148,7 +148,14 @@ public class MapFragment extends Fragment implements MapView.POIItemEventListene
 
     @Override
     public void onMapViewZoomLevelChanged(MapView mapView, int i) {
+        if (i >= 8) {
 
+
+            mapView.removeAllPOIItems(); // 모든 마커를 제거합니다.
+        }else {
+            // 확대 수준이 8 미만인 경우 기존의 마커를 다시 추가합니다.
+            mapView.addPOIItem(marker); // 기존에 추가한 마커를 다시 추가합니다.
+        }
     }
 
     @Override
