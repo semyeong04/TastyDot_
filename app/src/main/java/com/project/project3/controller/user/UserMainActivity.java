@@ -28,7 +28,7 @@ public class UserMainActivity extends AppCompatActivity {
                 // 1) 어디에
                 R.id.fl,
                 // 2) 어떤 부분화면으로
-                new UserInfoFragment()
+                new UserHomeFragment()
         ).commit();
 
         // bnv에 어떤 항목을 클릭했는지 구분한 다음
@@ -46,16 +46,22 @@ public class UserMainActivity extends AppCompatActivity {
                             new MapFragment()
                     ).commit();
                 } else if (itemId == R.id.bnv_search) {
-
+                    getSupportFragmentManager().beginTransaction().replace(
+                            R.id.fl,
+                            new UserSearchFragment()
+                    ).commit();
                 } else if (itemId == R.id.bnv_home) {
                     getSupportFragmentManager().beginTransaction().replace(
                             R.id.fl,
-                            new UserInfoFragment()
+                            new UserHomeFragment()
                     ).commit();
                 } else if (itemId == R.id.bnv_coupon) {
 
                 } else if (itemId == R.id.bnv_info) {
-
+                    getSupportFragmentManager().beginTransaction().replace(
+                            R.id.fl,
+                            new UserInfoFragment()
+                    ).commit();
                 }
 
                 // 항목에 대한 클릭 이벤트를 감지

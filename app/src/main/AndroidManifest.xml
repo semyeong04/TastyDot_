@@ -26,8 +26,8 @@
         <activity
             android:name=".controller.user.UserMainActivity"
             android:exported="false" />
-
-
+        <activity android:name=".controller.advertiser.CheckCouponActivity"
+            android:exported="false"/>
         <activity
             android:name=".controller.advertiser.HistoryCouponActivity"
             android:exported="false" />

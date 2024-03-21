@@ -20,6 +20,7 @@ public class HistoryCouponActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history_coupon);
 
+
         recyclerView = findViewById(R.id.rvUsedCoupon);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
