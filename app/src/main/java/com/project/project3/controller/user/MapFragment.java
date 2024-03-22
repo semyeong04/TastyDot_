@@ -23,6 +23,7 @@ import net.daum.mf.map.api.MapPoint;
 import net.daum.mf.map.api.MapView;
 import com.project.project3.R;
 
+import java.util.ArrayList;
 import java.util.zip.Inflater;
 
 public class MapFragment extends Fragment implements MapView.POIItemEventListener, MapView.MapViewEventListener{
@@ -83,14 +84,24 @@ public class MapFragment extends Fragment implements MapView.POIItemEventListene
 
         // MARKER_POINT를 위도,경도 설정하면 마커가 찍힌다.
         // setItemName은 음식점 이름
-        MapPoint MARKER_POINT = MapPoint.mapPointWithGeoCoord(34.808258, 126.390906);
-        MapPOIItem marker = new MapPOIItem();
-        marker.setItemName("Default Marker");
-        marker.setTag(0);
-        marker.setMapPoint(MARKER_POINT);
-        marker.setMarkerType(MapPOIItem.MarkerType.BluePin); // 기본으로 제공하는 BluePin 마커 모양.
-        marker.setSelectedMarkerType(MapPOIItem.MarkerType.RedPin); // 마커를 클릭했을때, 기본으로 제공하는 RedPin 마커 모양.
-        mapView.addPOIItem(marker);
+        MapPoint MARKER_POINT1 = MapPoint.mapPointWithGeoCoord(34.808258, 126.390906);
+        MapPOIItem marker1 = new MapPOIItem();
+        marker1.setItemName("은선식당");
+        marker1.setTag(0);
+        marker1.setMapPoint(MARKER_POINT1);
+        marker1.setMarkerType(MapPOIItem.MarkerType.BluePin); // 기본으로 제공하는 BluePin 마커 모양.
+        marker1.setSelectedMarkerType(MapPOIItem.MarkerType.RedPin); // 마커를 클릭했을때, 기본으로 제공하는 RedPin 마커 모양.
+
+        MapPoint MARKER_POINT2 = MapPoint.mapPointWithGeoCoord(34.80668878897797, 126.39139390797234);
+        MapPOIItem marker2 = new MapPOIItem();
+        marker2.setItemName("세명식당");
+        marker2.setTag(1);
+        marker2.setMapPoint(MARKER_POINT2);
+        marker2.setMarkerType(MapPOIItem.MarkerType.BluePin); // 기본으로 제공하는 BluePin 마커 모양.
+        marker2.setSelectedMarkerType(MapPOIItem.MarkerType.RedPin); // 마커를 클릭했을때, 기본으로 제공하는
+
+        mapView.addPOIItem(marker1);
+        mapView.addPOIItem(marker2);
 
         //카카오맵, 마커 이벤트 연결
         mapView.setMapViewEventListener(this);
@@ -148,13 +159,31 @@ public class MapFragment extends Fragment implements MapView.POIItemEventListene
 
     @Override
     public void onMapViewZoomLevelChanged(MapView mapView, int i) {
-        if (i >= 8) {
-
-
-            mapView.removeAllPOIItems(); // 모든 마커를 제거합니다.
+        if (mapView.getZoomLevel()>=3){
+            mapView.removeAllPOIItems();
         }else {
-            // 확대 수준이 8 미만인 경우 기존의 마커를 다시 추가합니다.
-            mapView.addPOIItem(marker); // 기존에 추가한 마커를 다시 추가합니다.
+            MapPoint MARKER_POINT1 = MapPoint.mapPointWithGeoCoord(34.808258, 126.390906);
+            MapPOIItem marker1 = new MapPOIItem();
+            marker1.setItemName("은선식당");
+            marker1.setTag(0);
+            marker1.setMapPoint(MARKER_POINT1);
+            marker1.setMarkerType(MapPOIItem.MarkerType.BluePin); // 기본으로 제공하는 BluePin 마커 모양.
+            marker1.setSelectedMarkerType(MapPOIItem.MarkerType.RedPin); // 마커를 클릭했을때, 기본으로 제공하는 RedPin 마커 모양.
+
+            MapPoint MARKER_POINT2 = MapPoint.mapPointWithGeoCoord(34.80668878897797, 126.39139390797234);
+            MapPOIItem marker2 = new MapPOIItem();
+            marker2.setItemName("세명식당");
+            marker2.setTag(1);
+            marker2.setMapPoint(MARKER_POINT2);
+            marker2.setMarkerType(MapPOIItem.MarkerType.BluePin); // 기본으로 제공하는 BluePin 마커 모양.
+            marker2.setSelectedMarkerType(MapPOIItem.MarkerType.RedPin); // 마커를 클릭했을때, 기본으로 제공하는
+
+            mapView.addPOIItem(marker1);
+            mapView.addPOIItem(marker2);
+
+
+
+
         }
     }
 
