@@ -18,6 +18,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".controller.user.UserInfoChangeActivity"
+            android:exported="false" />
+        <activity
             android:name=".controller.advertiser.WebViewActivity"
             android:exported="false" />
 
@@ -59,7 +62,7 @@
             android:name=".controller.advertiser.AddCouponActivity"
             android:exported="false" />
         <activity
-            android:name=".controller.common.SplashActivity"
+            android:name=".controller.advertiser.StandingActivity1"
             android:exported="false" />
         <activity
             android:name=".controller.advertiser.MenuRegiActivity"
@@ -74,7 +77,7 @@
             android:name=".controller.advertiser.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".controller.advertiser.StandingActivity1"
+            android:name=".controller.common.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

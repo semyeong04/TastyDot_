@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
 
                             if (userName != null){
                                 Toast.makeText(MainActivity.this,"로그인 완료",Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(MainActivity.this, UserActivity.class);
+                                Intent intent = new Intent(MainActivity.this, StandingActivity1.class);
                                 // 로그인 성공시
                                 intent.putExtra("id", id);
                                 intent.putExtra("userId", userId);

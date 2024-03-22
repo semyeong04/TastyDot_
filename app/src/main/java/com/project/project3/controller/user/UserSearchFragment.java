@@ -9,7 +9,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.ListAdapter;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.project.project3.R;
 
@@ -49,35 +52,7 @@ public class UserSearchFragment extends Fragment {
     }
 
     // 어댑터 클래스 정의
-    public static class ListAdapter extends ArrayAdapter<ListItem> {
-        public ListAdapter(Context context, ArrayList<ListItem> items) {
-            super(context, 0, items);
-        }
 
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            // convertView가 재활용될 수 있도록 설정
-            if (convertView == null) {
-                convertView = LayoutInflater.from(getContext()).inflate(R.layout.list, parent, false);
-            }
-
-            // 해당 position에 있는 데이터 가져오기
-            ListItem item = getItem(position);
-
-            // 리스트 아이템에 데이터 설정
-            TextView nameTextView = convertView.findViewById(R.id.tv_Name);
-            TextView addressTextView = convertView.findViewById(R.id.tv_add);
-            TextView scoreTextView = convertView.findViewById(R.id.tv_score);
-            TextView reviewCountTextView = convertView.findViewById(R.id.tv_review);
-
-            nameTextView.setText(item.getName());
-            addressTextView.setText(item.getAddress());
-            scoreTextView.setText(String.valueOf(item.getScore()));
-            reviewCountTextView.setText(String.valueOf(item.getReviewCount()));
-
-            return convertView;
-        }
-    }
 
     private ListView listView;
 
@@ -109,7 +84,18 @@ public class UserSearchFragment extends Fragment {
         items.add(new ListItem("솔마을 과자점4", "전남 목포시4", 4.5, 496));
 
         // 어댑터 생성 및 리스트뷰에 설정
-        ListAdapter adapter = new ListAdapter(getContext(), items);
+        ListAdapter adapter = new ListAdapter(getContext(), items) {
+            @NonNull
+            @Override
+            public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                return null;
+            }
+
+            @Override
+            public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+
+            }
+        };
         listView.setAdapter(adapter);
 
         return view;

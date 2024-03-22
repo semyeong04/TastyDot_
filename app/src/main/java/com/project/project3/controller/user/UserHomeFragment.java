@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.project.project3.R;
+import com.project.project3.adapter.HomeSlideAdapter;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -98,7 +99,7 @@ public class UserHomeFragment extends Fragment {
 
         // Initialize ViewPager2
         mPager = view.findViewById(R.id.viewpager);
-        pagerAdapter = new MyAdapter(requireActivity(), num_page); // MyAdapter는 사용자가 직접 작성한 것으로 대체해야 합니다.
+        pagerAdapter = new HomeSlideAdapter(requireActivity(), num_page); // MyAdapter는 사용자가 직접 작성한 것으로 대체해야 합니다.
         mPager.setAdapter(pagerAdapter);
 
         // Initialize CircleIndicator3
