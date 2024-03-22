@@ -56,7 +56,10 @@ public class UserMainActivity extends AppCompatActivity {
                             new UserHomeFragment()
                     ).commit();
                 } else if (itemId == R.id.bnv_coupon) {
-
+                    getSupportFragmentManager().beginTransaction().replace(
+                            R.id.fl,
+                            new UserCouponFragment()
+                    ).commit();
                 } else if (itemId == R.id.bnv_info) {
                     getSupportFragmentManager().beginTransaction().replace(
                             R.id.fl,
