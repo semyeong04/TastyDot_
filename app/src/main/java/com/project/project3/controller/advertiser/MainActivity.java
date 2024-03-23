@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.d("에러",error.getMessage());
+//                        Log.d("에러",error.getMessage());
                     }
                 }
         ) {
