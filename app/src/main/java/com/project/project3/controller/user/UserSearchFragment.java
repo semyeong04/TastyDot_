@@ -11,92 +11,79 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.project.project3.R;
+import com.project.project3.adapterViewholder.CouponAdapter;
+import com.project.project3.adapterViewholder.SearchAdapter;
+import com.project.project3.model.SearchVO;
+import com.project.project3.model.UserCouponVO;
 
 import java.util.ArrayList;
 
 public class UserSearchFragment extends Fragment {
 
     // 모델 클래스 정의
-    public static class ListItem {
-        private String name;
-        private String address;
-        private double score;
-        private int reviewCount;
+//    public static class ListItem {
+//        private String name;
+//        private String address;
+//        private double score;
+//        private int reviewCount;
+//
+//        public ListItem(String name, String address, double score, int reviewCount) {
+//            this.name = name;
+//            this.address = address;
+//            this.score = score;
+//            this.reviewCount = reviewCount;
+//        }
+//
+//        public String getName() {
+//            return name;
+//        }
+//
+//        public String getAddress() {
+//            return address;
+//        }
+//
+//        public double getScore() {
+//            return score;
+//        }
+//
+//        public int getReviewCount() {
+//            return reviewCount;
+//        }
+//    }
 
-        public ListItem(String name, String address, double score, int reviewCount) {
-            this.name = name;
-            this.address = address;
-            this.score = score;
-            this.reviewCount = reviewCount;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public String getAddress() {
-            return address;
-        }
-
-        public double getScore() {
-            return score;
-        }
-
-        public int getReviewCount() {
-            return reviewCount;
-        }
-    }
-
-    // 어댑터 클래스 정의
-
-
-    private ListView listView;
+    private RecyclerView rv_search;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_user_search, container, false);
-        listView = view.findViewById(R.id.listview1);
+        RecyclerView rv_search = view.findViewById(R.id.rv_search);
 
         // 리스트 아이템 데이터 생성
-        ArrayList<ListItem> items = new ArrayList<>();
+        ArrayList<SearchVO> items = new ArrayList<>();
 
-        // 필요한 만큼 데이터를 추가할 수 있습니다.
-        // 아래는 예시
-        items.add(new ListItem("솔마을 과자점", "전남 목포시", 4.9, 500));
-        items.add(new ListItem("솔마을 과자점1", "전남 목포시1", 4.8, 499));
-        items.add(new ListItem("솔마을 과자점2", "전남 목포시2", 4.7, 498));
-        items.add(new ListItem("솔마을 과자점3", "전남 목포시3", 4.6, 497));
-        items.add(new ListItem("솔마을 과자점4", "전남 목포시4", 4.5, 496));
-        items.add(new ListItem("솔마을 과자점", "전남 목포시", 4.9, 500));
-        items.add(new ListItem("솔마을 과자점1", "전남 목포시1", 4.8, 499));
-        items.add(new ListItem("솔마을 과자점2", "전남 목포시2", 4.7, 498));
-        items.add(new ListItem("솔마을 과자점3", "전남 목포시3", 4.6, 497));
-        items.add(new ListItem("솔마을 과자점4", "전남 목포시4", 4.5, 496));
-        items.add(new ListItem("솔마을 과자점", "전남 목포시", 4.9, 500));
-        items.add(new ListItem("솔마을 과자점1", "전남 목포시1", 4.8, 499));
-        items.add(new ListItem("솔마을 과자점2", "전남 목포시2", 4.7, 498));
-        items.add(new ListItem("솔마을 과자점3", "전남 목포시3", 4.6, 497));
-        items.add(new ListItem("솔마을 과자점4", "전남 목포시4", 4.5, 496));
+        SearchVO vo1 = new SearchVO("은선 식당", "목포시 전체", "4.9", "500", R.drawable.camera);
+        SearchVO vo2 = new SearchVO("세명 식당", "목포시 우미오션빌", "4.9", "500", R.drawable.camera);
+        SearchVO vo3 = new SearchVO("맹진 식당", "목포시 부영2차", "4.9", "500", R.drawable.camera);
+        SearchVO vo4 = new SearchVO("경근 식당", "목포시 남악어딘가", "4.9", "500", R.drawable.camera);
+        items.add(vo1);
+        items.add(vo2);
+        items.add(vo3);
+        items.add(vo4);
 
-        // 어댑터 생성 및 리스트뷰에 설정
-        ListAdapter adapter = new ListAdapter(getContext(), items) {
-            @NonNull
-            @Override
-            public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                return null;
-            }
+        ArrayList<SearchVO> Searchs = items; //  경근씨 DB쿠폰 데이터 입력 ex20240122참고해서 만들면됩니다!
+        SearchAdapter adapter = new SearchAdapter(Searchs);
 
-            @Override
-            public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+        rv_search.setAdapter(adapter);
+        LinearLayoutManager manager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL,false);
+        rv_search.setLayoutManager(manager);
+        // 리사이클러뷰 새로고침 : adpater.notifyDatasetChanged();
 
-            }
-        };
-        listView.setAdapter(adapter);
 
         return view;
     }

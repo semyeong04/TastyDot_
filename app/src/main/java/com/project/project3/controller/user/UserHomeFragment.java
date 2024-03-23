@@ -43,9 +43,9 @@ public class UserHomeFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     // Delay time in milliseconds
-    private static final long DELAY_MS = 3000;
+    private static final long DELAY_MS = 4000;
     // Time between sliding in milliseconds
-    private static final long PERIOD_MS = 3000;
+    private static final long PERIOD_MS = 4000;
 
     private Timer timer;
     private Handler handler = new Handler(Looper.getMainLooper());

@@ -1,43 +1,60 @@
-package com.project.project3.adapter;
+package com.project.project3.adapterViewholder;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.project.project3.R;
+import com.project.project3.controller.user.MapFragment;
 import com.project.project3.controller.user.UserSearchFragment;
+import com.project.project3.model.SearchVO;
 
 import java.util.ArrayList;
 
-public class SearchAdapter extends ArrayAdapter<UserSearchFragment.ListItem> {
-    public SearchAdapter(Context context, ArrayList<UserSearchFragment.ListItem> items) {
-        super(context, 0, items);
+public class SearchAdapter extends RecyclerView.Adapter<SearchViewHolder> {
+
+    private ArrayList<SearchVO> dataset;
+
+    public SearchAdapter(ArrayList<SearchVO> dataset) { this.dataset = dataset; }
+
+    @NonNull
+    @Override
+    public SearchViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list, parent, false);
+
+        SearchViewHolder holder = new SearchViewHolder(view);
+        return holder;
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        // convertView가 재활용될 수 있도록 설정
-        if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.list, parent, false);
-        }
+    public void onBindViewHolder(@NonNull SearchViewHolder holder, int position) {
+        SearchVO item = dataset.get(position);
+        holder.getImg_list().setImageResource(item.getImg_list());
+        holder.getTv_add().setText(item.getTv_add());
+        holder.getTv_Name().setText(item.getTv_name());
+        holder.getTv_review().setText(item.getTv_review());
+        holder.getTv_score().setText(item.getTv_score());
+        holder.listener = new OnItemClickListener() {
+            @Override
+            public void OnClickListener(View v, int position) {
 
-        // 해당 position에 있는 데이터 가져오기
-        UserSearchFragment.ListItem item = getItem(position);
+                // 여기서 검색프래그먼트 -> 지도프래그먼트로 이동하는데 데이터 하나 가져가야함
+                Intent intent = new Intent(holder.itemView.getContext(), MapFragment.class);
+                holder.itemView.getContext().startActivity(intent);
+            }
+        };
 
-        // 리스트 아이템에 데이터 설정
-        TextView nameTextView = convertView.findViewById(R.id.tv_Name);
-        TextView addressTextView = convertView.findViewById(R.id.tv_add);
-        TextView scoreTextView = convertView.findViewById(R.id.tv_score);
-        TextView reviewCountTextView = convertView.findViewById(R.id.tv_review);
+    }
 
-        nameTextView.setText(item.getName());
-        addressTextView.setText(item.getAddress());
-        scoreTextView.setText(String.valueOf(item.getScore()));
-        reviewCountTextView.setText(String.valueOf(item.getReviewCount()));
-
-        return convertView;
+    @Override
+    public int getItemCount() {
+        return dataset.size();
     }
 }
