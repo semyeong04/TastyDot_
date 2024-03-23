@@ -7,8 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 
 import com.project.project3.R;
-import com.project.project3.adapter.HistoryCouponAdapter;
-import com.project.project3.model.CouponVO;
+import com.project.project3.adapterViewholder.HistoryCouponAdapter;
 
 public class HistoryCouponActivity extends AppCompatActivity {
 

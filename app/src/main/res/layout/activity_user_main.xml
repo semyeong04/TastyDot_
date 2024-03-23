@@ -6,22 +6,33 @@
     android:layout_height="match_parent"
     tools:context=".controller.user.UserMainActivity">
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bvMain"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:backgroundTint="#33EE99C2"
-        app:itemIconTint="@drawable/bnv_color"
-        app:itemTextColor="@drawable/bnv_color"
-        app:labelVisibilityMode="labeled"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline9"
-        app:menu="@menu/menu_adv">
+        app:layout_constraintTop_toTopOf="@+id/guideline9">
 
-    </com.google.android.material.bottomnavigation.BottomNavigationView>
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bvMain"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:backgroundTint="#33FCF9FB"
+            app:itemIconTint="@drawable/bnv_color"
+            app:itemTextColor="@drawable/bnv_color"
+            app:labelVisibilityMode="labeled"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline9"
+            app:menu="@menu/menu_adv">
 
+        </com.google.android.material.bottomnavigation.BottomNavigationView>
+    </androidx.cardview.widget.CardView>
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline9"
         android:layout_width="wrap_content"
@@ -33,7 +44,7 @@
         android:id="@+id/fl"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/bvMain"
+        app:layout_constraintBottom_toTopOf="@+id/cardView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">

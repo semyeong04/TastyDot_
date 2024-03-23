@@ -85,7 +85,7 @@
         android:id="@+id/tvUserJoin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="128dp"
+        android:layout_marginTop="100dp"
         android:text="맛있닷이 처음 이신가요? >"
         app:layout_constraintEnd_toEndOf="@+id/btnUserLogin"
         app:layout_constraintStart_toStartOf="@+id/btnUserLogin"
