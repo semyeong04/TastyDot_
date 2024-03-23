@@ -26,7 +26,6 @@ import java.security.NoSuchAlgorithmException;
 public class UserLoginActivity extends AppCompatActivity {
 
     TextView tvUserJoin;
-    Intent intent;
 
 
     @Override

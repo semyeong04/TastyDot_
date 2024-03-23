@@ -1,15 +1,20 @@
-package com.project.project3.controller.user;
+package com.project.project3.adapter;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-public class MyAdapter extends FragmentStateAdapter {
+import com.project.project3.controller.user.Frame1Fragment;
+import com.project.project3.controller.user.Frame2Fragment;
+import com.project.project3.controller.user.Frame3Fragment;
+import com.project.project3.controller.user.Frame4Fragment;
+
+public class HomeSlideAdapter extends FragmentStateAdapter {
 
     private int num_pages;
 
-    public MyAdapter(@NonNull FragmentActivity fragmentActivity, int num_pages) {
+    public HomeSlideAdapter(@NonNull FragmentActivity fragmentActivity, int num_pages) {
         super(fragmentActivity);
         this.num_pages = num_pages;
     }

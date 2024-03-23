@@ -1,6 +1,7 @@
 package com.project.project3.controller.user;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;
@@ -68,7 +69,7 @@ public class UserInfoFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_user_info,container,false);
 
-
+        TextView tvChange = view.findViewById(R.id.tv_change);
         TextView tvUserLogout = view.findViewById(R.id.tvUserLogout);
         // 로그아웃 기능 구현 부탁
         tvUserLogout.setOnClickListener(new View.OnClickListener() {
@@ -78,10 +79,14 @@ public class UserInfoFragment extends Fragment {
                 logout();
             }
         });
+        tvChange.setOnClickListener(v -> {
+            Intent intent = new Intent(getContext(), UserInfoChangeActivity.class);
+            startActivity(intent);
+        });
 
 
 
-        return inflater.inflate(R.layout.fragment_user_info, container, false);
+        return view;
     }
 
 

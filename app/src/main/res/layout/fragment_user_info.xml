@@ -153,7 +153,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tvUserUsedCoupon" />
 
         <TextView
-            android:id="@+id/textView32"
+            android:id="@+id/tv_change"
             android:layout_width="0dp"
             android:layout_height="45dp"
             android:layout_marginStart="25dp"
@@ -192,7 +192,7 @@
             android:textColor="#80000000"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView32" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_change" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

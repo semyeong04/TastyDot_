@@ -37,8 +37,6 @@ public class MainActivity extends AppCompatActivity {
     String userId;
     String userPw;
     String userEmail;
-    Intent intent;
-    boolean a;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,10 +73,16 @@ public class MainActivity extends AppCompatActivity {
 
                             if (userName != null){
                                 Toast.makeText(MainActivity.this,"로그인 완료",Toast.LENGTH_SHORT).show();
-                                checkStore();
+                                Intent intent = new Intent(MainActivity.this, StandingActivity1.class);
+                                // 로그인 성공시
+                                intent.putExtra("id", id);
+                                intent.putExtra("userId", userId);
+                                intent.putExtra("userName", userName);
+                                intent.putExtra("userEmail", userEmail);
 
+                                Log.d("MainActivity", "userName: " + userName);
 
-
+                                startActivity(intent);
                             }else {
                                 Toast.makeText(MainActivity.this, "아이디 또는 비밀번호가 틀렸습니다.", Toast.LENGTH_SHORT).show();
                             }
@@ -121,60 +125,4 @@ public class MainActivity extends AppCompatActivity {
         request.setShouldCache(false);
         requestQueue.add(request);
     }
-
-    public void checkStore() {
-        String url = "http://192.168.219.101:8081/api/checkStore";
-        StringRequest request = new StringRequest(Request.Method.POST, url,
-                response -> {
-                    try {
-                        // 서버로부터 응답을 받았을 때
-                        JSONObject jsonResponse = new JSONObject(response);
-                        boolean hasStore = jsonResponse.getBoolean("hasStore");
-                        if (hasStore) {
-                            // 가게가 있는 경우
-                            intent = new Intent(MainActivity.this, UserActivity.class);
-                        } else {
-                            // 가게가 없는 경우
-                            intent = new Intent(MainActivity.this, StandingActivity1.class);
-                        }
-                        // 공통 인텐트 데이터 설정
-                        intent.putExtra("id", id);
-                        intent.putExtra("userId", userId);
-                        intent.putExtra("userName", userName);
-                        intent.putExtra("userEmail", userEmail);
-                        startActivity(intent);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                },
-                error -> {
-                    // 에러가 발생했을 때
-                    Toast.makeText(MainActivity.this, "가게 정보 조회 실패: " + error.toString(), Toast.LENGTH_SHORT).show();
-                }
-        ) {
-            @Override
-            public byte[] getBody() throws AuthFailureError {
-                // 요청 본문 구성
-                JSONObject jsonBody = new JSONObject();
-                try {
-                    jsonBody.put("id", id);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                return jsonBody.toString().getBytes();
-            }
-
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                // 요청 헤더 설정
-                Map<String, String> headers = new HashMap<>();
-                headers.put("Accept", "application/json");
-                headers.put("Content-Type", "application/json");
-                return headers;
-            }
-        };
-        request.setShouldCache(false);
-        requestQueue.add(request);
-    }
-
 }
