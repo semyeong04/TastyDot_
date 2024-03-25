@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,27 +33,25 @@ public class UserInfoFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    TextView tvUserName;
 
+    String id;
+    String clientId;
+    String clientName;
+    String clientEmail;
     public UserInfoFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment UserInfoFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static UserInfoFragment newInstance(String param1, String param2) {
         UserInfoFragment fragment = new UserInfoFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
+
         return fragment;
+
     }
 
     @Override
@@ -62,12 +61,30 @@ public class UserInfoFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_user_info,container,false);
+        tvUserName = view.findViewById(R.id.tvUserName);
+        Bundle bundle = getArguments();
+
+
+        if (bundle != null) {
+            id = getArguments().getString("id");
+            clientId = getArguments().getString("clientId");
+            clientName = getArguments().getString("clientName");
+            clientEmail = getArguments().getString("clientEmail");
+            Log.d("프레그먼트로 넘어왔는지? ", "Client Name: " + String.valueOf(clientName));
+        }
+        if (bundle != null) {
+            String clientName = bundle.getString("clientName");
+            // TextView에 텍스트 설정
+            tvUserName.setText(clientName);
+        }
+
 
         TextView tvChange = view.findViewById(R.id.tv_change);
         TextView tvUserLogout = view.findViewById(R.id.tvUserLogout);

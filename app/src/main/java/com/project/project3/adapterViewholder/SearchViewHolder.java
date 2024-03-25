@@ -20,12 +20,15 @@ public class SearchViewHolder extends RecyclerView.ViewHolder implements View.On
     private TextView tv_score;
 
     private TextView tv_review;
+    private TextView tv_hash;
+    private TextView tv_rate;
 
     private ImageView img_list;
 
     public TextView getTv_Name() {
         return tv_Name;
     }
+    public TextView getTv_rate(){ return tv_rate;}
 
     public TextView getTv_add() {
         return tv_add;
@@ -35,8 +38,8 @@ public class SearchViewHolder extends RecyclerView.ViewHolder implements View.On
         return tv_score;
     }
 
-    public TextView getTv_review() {
-        return tv_review;
+    public TextView getTv_hash() {
+        return tv_hash;
     }
 
     public ImageView getImg_list() {
@@ -48,8 +51,8 @@ public class SearchViewHolder extends RecyclerView.ViewHolder implements View.On
         this.tv_Name = itemView.findViewById(R.id.tv_Name);
         this.tv_add = itemView.findViewById(R.id.tv_add);
         this.tv_score = itemView.findViewById(R.id.tv_score);
-        this.tv_review = itemView.findViewById(R.id.tv_review);
         this.img_list = itemView.findViewById(R.id.img_list);
+        this.tv_hash = itemView.findViewById(R.id.tv_hash);
 
     itemView.setOnClickListener(this);
         // itemview를 클릭하는 이벤트

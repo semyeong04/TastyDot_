@@ -39,8 +39,8 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchViewHolder> {
         holder.getImg_list().setImageResource(item.getImg_list());
         holder.getTv_add().setText(item.getTv_add());
         holder.getTv_Name().setText(item.getTv_name());
-        holder.getTv_review().setText(item.getTv_review());
         holder.getTv_score().setText(item.getTv_score());
+        holder.getTv_hash().setText(item.getTv_hash());
         holder.listener = new OnItemClickListener() {
             @Override
             public void OnClickListener(View v, int position) {

@@ -1,7 +1,9 @@
 package com.project.project3.adapterViewholder;
 
+
 import android.content.Context;
 import android.content.DialogInterface;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,17 +13,28 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.project.project3.R;
 import com.project.project3.model.UserCouponVO;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
 public class CouponAdapter extends RecyclerView.Adapter<UserCouponViewHolder> {
 
     private ArrayList<UserCouponVO> dataset;
-    public CouponAdapter(ArrayList<UserCouponVO> dataset){
+
+    public CouponAdapter(ArrayList<UserCouponVO> dataset) {
         this.dataset = dataset;
     }
+
+    private RequestQueue requestQueue;
+    private Context context;
+    private OnCouponUseListener listener;
 
     @NonNull
     @Override
@@ -32,17 +45,29 @@ public class CouponAdapter extends RecyclerView.Adapter<UserCouponViewHolder> {
         return holder;
     }
 
+    public interface OnCouponUseListener {
+        void onCouponUse(int storeIdx, String clientId, String discountPrice);
+    }
+
+    public CouponAdapter(Context context, ArrayList<UserCouponVO> dataset, OnCouponUseListener listener) {
+        this.context = context;
+        this.dataset = dataset;
+        this.listener = listener;
+
+    }
+
     @Override
     public void onBindViewHolder(@NonNull UserCouponViewHolder holder, int position) {
+
         UserCouponVO item = dataset.get(position);
-        holder.getCouponName().setText(item.getUserCouponName());
+        holder.getCouponName().setText(item.getUserCouponStoreName());
         holder.getCouponPrice().setText(item.getUserCouponPrice());
         holder.getCouponDate().setText(item.getUserCouponDate());
         holder.getCouponImg().setImageResource(item.getUserCouponImg());
         holder.listener = new OnItemClickListener() {
             @Override
             public void OnClickListener(View v, int position) {
-                showDialog(v.getContext(),position);
+                showDialog(v.getContext(), position);
 
             }
         };
@@ -61,6 +86,7 @@ public class CouponAdapter extends RecyclerView.Adapter<UserCouponViewHolder> {
 
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+                        Log.d("", "");
                         dataset.remove(position);
                         notifyDataSetChanged();
                         Toast.makeText(context, "쿠폰 사용 완료", Toast.LENGTH_SHORT).show();
@@ -77,5 +103,6 @@ public class CouponAdapter extends RecyclerView.Adapter<UserCouponViewHolder> {
         AlertDialog msgDlg = msgBuilder.create();
         msgDlg.show();
     }
+
 
 }
