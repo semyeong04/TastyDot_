@@ -61,7 +61,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     public void loginRequest(){
-        String url = "http://192.168.219.101:8081/api/login";
+
+//        String url = "http://192.168.219.101:8081/api/login";
+        String url = "http://192.168.0.25:8081/api/login";
+//        http://192.168.0.50:8081/api/
         StringRequest request = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
                     @Override
@@ -122,7 +125,8 @@ public class MainActivity extends AppCompatActivity {
         requestQueue.add(request);
     }
     public void checkStore() {
-        String url = "http://192.168.219.101:8081/api/checkStore";
+//        String url = "http://192.168.219.101:8081/api/checkStore";
+        String url = "http://192.168.0.25:8081/api/checkStore";
         StringRequest request = new StringRequest(Request.Method.POST, url,
                 response -> {
                     try {

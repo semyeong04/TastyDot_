@@ -75,8 +75,6 @@ public class AddCouponActivity extends AppCompatActivity {
 
 
     }
-
-
     public void addCoupon() {
         String url = "http://192.168.219.101:8081/api/addCoupons"; // API 엔드포인트 수정 필요
         if (requestQueue == null) {
