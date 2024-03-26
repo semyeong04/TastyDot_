@@ -10,18 +10,10 @@ import android.widget.HorizontalScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
-
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.Volley;
-import com.android.volley.Request.Method;
 
 import com.project.project3.R;
 import com.project.project3.adapterViewholder.SearchAdapter;
@@ -38,6 +30,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -59,80 +52,117 @@ public class UserSearchFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_user_search, container, false);
         rv_search = view.findViewById(R.id.rv_search);
-
-        // 카테고리별 스크롤뷰 초기 설정
-        setupCategoryListeners(view);
-
         // 검색 결과를 담을 ArrayList 생성
-//        ArrayList<SearchVO> items = new ArrayList<>();
+        ArrayList<SearchVO> items = new ArrayList<>();
         // items.add(new SearchVO("스타벅스", "아메리카노"));
-        // 리스트 아이템 데이터 생성
-        items = new ArrayList<>();
-        getStore();
-        ArrayList<SearchVO> Searchs = items;
 
         // 검색 결과를 표시할 어댑터 생성 및 설정
-        SearchAdapter adapter = new SearchAdapter(Searchs);
-//        SearchAdapter adapter = new SearchAdapter(items);
+        SearchAdapter adapter = new SearchAdapter(items);
         rv_search.setAdapter(adapter);
 
         // 리사이클러뷰 레이아웃 매니저 설정
-//        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-//        rv_search.setLayoutManager(layoutManager);
-        LinearLayoutManager manager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL,false);
-        rv_search.setLayoutManager(manager);
+        rv_search.setLayoutManager(new LinearLayoutManager(getContext()));
 
+        // 카테고리별 스크롤뷰 초기 설정
+        setupCategoryListeners(view);
 
         // 초기에 모든 스크롤뷰를 숨김
         hideAllScrollViews(view);
 
         // 통신하기
         kr_01 = view.findViewById(R.id.kr_01);
+        kr_02 = view.findViewById(R.id.kr_02);
+        kr_03 = view.findViewById(R.id.kr_03);
+        kr_04 = view.findViewById(R.id.kr_04);
+        kr_05 = view.findViewById(R.id.kr_05);
+
         kr_01.setOnClickListener(new View.OnClickListener() { // 한식
             @Override
-            public void onClick(View v) { // 클릭 이벤트 처리를 위한 메서드
-                OkHttpClient client = new OkHttpClient(); // OkHttpClient 객체 생성
-                String koreanFoodText = ""; // 한식 텍스트 초기화
+            public void onClick(View v) {
+                Log.d("디버그로그", "onClick: 클릭 이벤트 처리 시작");
+                // OkHttpClient client = new OkHttpClient();
+                // OkHttpClient에 타임아웃 설정 추가
+                OkHttpClient client = new OkHttpClient.Builder()
+                    .connectTimeout(300, TimeUnit.SECONDS) // 연결 타임아웃
+                    .writeTimeout(300, TimeUnit.SECONDS) // 쓰기 타임아웃
+                    .readTimeout(300, TimeUnit.SECONDS) // 읽기 타임아웃
+                    .build();
+                String koreanFoodText = "";
                 try {
+                    Log.d("디버그로그", "onClick: URL 인코딩 시도");
                     koreanFoodText = URLEncoder.encode(kr_01.getText().toString(), StandardCharsets.UTF_8.name());
-                    // 입력된 한식 텍스트를 UTF-8 형식으로 인코딩
+                    Log.d("디버그로그", "onClick: URL 인코딩 성공 - " + koreanFoodText);
                     Toast.makeText(getActivity(), koreanFoodText, Toast.LENGTH_SHORT).show();
+
+
                 } catch (UnsupportedEncodingException e) {
-                    // 이 경우는 발생하지 않습니다.ㅅ
+                    // 이 경우는 발생하지 않습니다.
+                    Log.e("디버그로그", "onClick: UnsupportedEncodingException 발생", e);
                 }
 
-                String url = "http://192.168.219.106:5000/korean_food?keyword=한식&keyword2=" + koreanFoodText; // 요청할 URL 생성
-                Request request = new Request.Builder() // HTTP 요청 객체 생성
-                        .url(url) // 요청할 URL 설정
-                        .build(); // 요청 객체 빌드
+                String url = "http://192.168.219.106:5000/korean_food?keyword=한식&keyword2=" + koreanFoodText;
+                Log.d("디버그로그", "onClick: 요청 URL - " + url);
+                Request request = new Request.Builder()
+                    .url(url)
+                    .build();
+                Log.d("디버그로그", "onClick: 사용자에게 Toast 메시지 표시 - " + koreanFoodText);
 
-                client.newCall(request).enqueue(new Callback() { // 비동기 방식으로 요청 보내고 응답 처리
+
+                client.newCall(request).enqueue(new Callback() {
                     @Override
                     public void onFailure(@NotNull Call call, @NotNull IOException e) {
                         // 요청 실패 시 호출되는 메서드
-                        getActivity().runOnUiThread(() -> Toast.makeText(getContext(), "요청 실패: " + e.getMessage(), Toast.LENGTH_SHORT).show()); // UI 스레드에서 Toast 메시지를 통해 실패 메시지 표시
+                        Log.e("디버그로그", "onFailure: 요청 실패", e);
+                        getActivity().runOnUiThread(() -> {
+                            if (getActivity() != null) {
+                                Log.d("디버그로그", "getActivity() 호출 성공.");
+                            } else {
+                                Log.e("디버그로그", "getActivity() 호출 실패. Activity가 null입니다.");
+                            }
+
+                            // 토스트 메시지 표시 테스트
+                            if (getContext() != null) {
+                                Toast.makeText(getContext(), "테스트 토스트 메시지", Toast.LENGTH_SHORT).show();
+                            }
+                            // UI 스레드에서 실행 전 로그
+                            Log.d("디버그로그", "onFailure: UI 스레드에서 Toast 메시지 표시 - 요청 실패: " + e.getMessage());
+                            if (getContext() != null) {
+                                Log.d("디버그로그", "getContext() 호출 성공.");
+                            } else {
+                                Log.e("디버그로그", "getContext() 호출 실패. Context가 null입니다.");
+                            }
+                            Toast.makeText(getContext(), "요청 실패: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        });
                     }
 
                     @Override
-                    public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException { // 요청 응답 받았을 때 호출되는 메서드
-                        if (!response.isSuccessful()) { // 응답이 성공적이지 않을 때
-                            throw new IOException("Unexpected code " + response); // 예외 던지기
+                    public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                        Log.d("디버그로그", "onResponse: 서버로부터 응답 받음.");
+                        // 요청 응답 받았을 때 호출되는 메서드
+                        if (!response.isSuccessful()) {
+                            Log.d("디버그로그", "onResponse: 응답 실패. 코드: " + response);
+                            throw new IOException("Unexpected code " + response);
                         }
-                        final String responseData = response.body().string(); // 응답 데이터를 문자열로 저장
+                        final String responseData = response.body().string();
+                        Log.d("디버그로그", "onResponse: 응답 데이터: " + responseData);
 
-                        getActivity().runOnUiThread(() -> { // UI 스레드에서 실행
+                        getActivity().runOnUiThread(() -> {
                             try {
-                                JSONArray jsonArray = new JSONArray(responseData); // 응답 데이터를 JSONArray로 파싱
-                                items.clear(); // 기존 목록을 지우고 새 데이터로 업데이트
-                                for (int i = 0; i < jsonArray.length(); i++) { // JSONArray 반복문
-                                    JSONObject storeObject = jsonArray.getJSONObject(i); // JSONArray에서 JSONObject 가져오기
-                                    String tv_name = storeObject.getString("name"); // 이름 가져오기
-                                    String tv_add = storeObject.getString("addr"); // 주소 가져오기
-                                    items.add(new SearchVO(tv_name, tv_add, "해시태그","4.9", R.drawable.camera)); // SearchVO 객체로 변환하여 목록에 추가
+                                JSONArray jsonArray = new JSONArray(responseData);
+                                Log.d("디버그로그", "UI Thread: 항목 목록 초기화");
+                                items.clear();
+                                for (int i = 0; i < jsonArray.length(); i++) {
+                                    JSONObject storeObject = jsonArray.getJSONObject(i);
+                                    Log.d("디버그로그", "UI Thread: 항목 추가 - " + storeObject.getString("storeName"));
+                                    items.add(new SearchVO(storeObject.getString("storeName"),
+                                        storeObject.getString("address"),
+                                        storeObject.getString("menu"),
+                                        storeObject.getString("hashtag")));
                                 }
-                                adapter.notifyDataSetChanged(); // 어댑터에 데이터 변경 알림
-                            } catch (JSONException e) { // JSON 파싱 오류 처리
-                                Log.e("UserSearchFragment", "JSON 파싱 에러: " + e.getMessage()); // 로그에 에러 메시지 출력
+                                Log.d("디버그로그", "UI Thread: 어댑터에 데이터 변경을 알림");
+                                adapter.notifyDataSetChanged();
+                            } catch (JSONException e) {
+                                Log.e("SearchFragment", "JSON 파싱 오류", e);
                             }
                         });
                     }
@@ -141,55 +171,95 @@ public class UserSearchFragment extends Fragment {
 
         });
 
-
+        // 중식
         cn_01 = view.findViewById(R.id.cn_01);
-        cn_01.setOnClickListener(new View.OnClickListener() { // 중식
+        cn_01.setOnClickListener(new View.OnClickListener() { // 한식
             @Override
             public void onClick(View v) {
-                OkHttpClient client = new OkHttpClient();
-                String chineseFoodText = "";
+                Log.d("디버그로그", "onClick: 클릭 이벤트 처리 시작");
+                // OkHttpClient client = new OkHttpClient();
+                // OkHttpClient에 타임아웃 설정 추가
+                OkHttpClient client = new OkHttpClient.Builder()
+                    .connectTimeout(300, TimeUnit.SECONDS) // 연결 타임아웃
+                    .writeTimeout(300, TimeUnit.SECONDS) // 쓰기 타임아웃
+                    .readTimeout(300, TimeUnit.SECONDS) // 읽기 타임아웃
+                    .build();
+                String cnFoodText = "";
                 try {
-                    chineseFoodText = URLEncoder.encode(cn_01.getText().toString(), StandardCharsets.UTF_8.name());
+                    Log.d("디버그로그", "onClick: URL 인코딩 시도");
+                    cnFoodText = URLEncoder.encode(cn_01.getText().toString(), StandardCharsets.UTF_8.name());
+                    Log.d("디버그로그", "onClick: URL 인코딩 성공 - " + cnFoodText);
+                    Toast.makeText(getActivity(), cnFoodText, Toast.LENGTH_SHORT).show();
+
 
                 } catch (UnsupportedEncodingException e) {
                     // 이 경우는 발생하지 않습니다.
+                    Log.e("디버그로그", "onClick: UnsupportedEncodingException 발생", e);
                 }
 
-                String url = "http://192.168.219.106:5000/chinese_food?keyword=중식&keyword2=" + chineseFoodText;
+                String url = "http://192.168.219.106:5000/cn_food?keyword=중식&keyword2=" + cnFoodText;
+                Log.d("디버그로그", "onClick: 요청 URL - " + url);
                 Request request = new Request.Builder()
-                        .url(url)
-                        .build();
-                Toast.makeText(getActivity(), chineseFoodText, Toast.LENGTH_SHORT).show();
+                    .url(url)
+                    .build();
+                Log.d("디버그로그", "onClick: 사용자에게 Toast 메시지 표시 - " + cnFoodText);
+
 
                 client.newCall(request).enqueue(new Callback() {
                     @Override
                     public void onFailure(@NotNull Call call, @NotNull IOException e) {
                         // 요청 실패 시 호출되는 메서드
-                        getActivity().runOnUiThread(() -> Toast.makeText(getContext(), "요청 실패: " + e.getMessage(), Toast.LENGTH_SHORT).show()); // UI 스레드에서 Toast 메시지를 통해 실패 메시지 표시
+                        Log.e("디버그로그", "onFailure: 요청 실패", e);
+                        getActivity().runOnUiThread(() -> {
+                            if (getActivity() != null) {
+                                Log.d("디버그로그", "getActivity() 호출 성공.");
+                            } else {
+                                Log.e("디버그로그", "getActivity() 호출 실패. Activity가 null입니다.");
+                            }
+
+                            // 토스트 메시지 표시 테스트
+                            if (getContext() != null) {
+                                Toast.makeText(getContext(), "테스트 토스트 메시지", Toast.LENGTH_SHORT).show();
+                            }
+                            // UI 스레드에서 실행 전 로그
+                            Log.d("디버그로그", "onFailure: UI 스레드에서 Toast 메시지 표시 - 요청 실패: " + e.getMessage());
+                            if (getContext() != null) {
+                                Log.d("디버그로그", "getContext() 호출 성공.");
+                            } else {
+                                Log.e("디버그로그", "getContext() 호출 실패. Context가 null입니다.");
+                            }
+                            Toast.makeText(getContext(), "요청 실패: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        });
                     }
 
                     @Override
                     public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                        Log.d("디버그로그", "onResponse: 서버로부터 응답 받음.");
                         // 요청 응답 받았을 때 호출되는 메서드
                         if (!response.isSuccessful()) {
+                            Log.d("디버그로그", "onResponse: 응답 실패. 코드: " + response);
                             throw new IOException("Unexpected code " + response);
                         }
                         final String responseData = response.body().string();
-                        Log.d("Response", responseData);
+                        Log.d("디버그로그", "onResponse: 응답 데이터: " + responseData);
 
                         getActivity().runOnUiThread(() -> {
                             try {
                                 JSONArray jsonArray = new JSONArray(responseData);
+                                Log.d("디버그로그", "UI Thread: 항목 목록 초기화");
                                 items.clear();
                                 for (int i = 0; i < jsonArray.length(); i++) {
                                     JSONObject storeObject = jsonArray.getJSONObject(i);
-                                    String tv_name = storeObject.getString("name");
-                                    String tv_add = storeObject.getString("addr");
-                                    items.add(new SearchVO(tv_name, tv_add,"해시태그","4.9", R.drawable.camera));
+                                    Log.d("디버그로그", "UI Thread: 항목 추가 - " + storeObject.getString("storeName"));
+                                    items.add(new SearchVO(storeObject.getString("storeName"),
+                                        storeObject.getString("address"),
+                                        storeObject.getString("menu"),
+                                        storeObject.getString("hashtag")));
                                 }
+                                Log.d("디버그로그", "UI Thread: 어댑터에 데이터 변경을 알림");
                                 adapter.notifyDataSetChanged();
                             } catch (JSONException e) {
-                                Log.e("UserSearchFragment", "JSON 파싱 에러: " + e.getMessage());
+                                Log.e("SearchFragment", "JSON 파싱 오류", e);
                             }
                         });
                     }
@@ -199,53 +269,95 @@ public class UserSearchFragment extends Fragment {
         });
 
 
+        // 일식
         jp_01 = view.findViewById(R.id.jp_01);
-        jp_01.setOnClickListener(new View.OnClickListener() { // 일식
+        jp_01.setOnClickListener(new View.OnClickListener() { // 한식
             @Override
             public void onClick(View v) {
-                OkHttpClient client = new OkHttpClient();
-                String japaneseFoodText = "";
+                Log.d("디버그로그", "onClick: 클릭 이벤트 처리 시작");
+                // OkHttpClient client = new OkHttpClient();
+                // OkHttpClient에 타임아웃 설정 추가
+                OkHttpClient client = new OkHttpClient.Builder()
+                    .connectTimeout(300, TimeUnit.SECONDS) // 연결 타임아웃
+                    .writeTimeout(300, TimeUnit.SECONDS) // 쓰기 타임아웃
+                    .readTimeout(300, TimeUnit.SECONDS) // 읽기 타임아웃
+                    .build();
+                String jpFoodText = "";
                 try {
-                    japaneseFoodText = URLEncoder.encode(jp_01.getText().toString(), StandardCharsets.UTF_8.name());
+                    Log.d("디버그로그", "onClick: URL 인코딩 시도");
+                    jpFoodText = URLEncoder.encode(jp_01.getText().toString(), StandardCharsets.UTF_8.name());
+                    Log.d("디버그로그", "onClick: URL 인코딩 성공 - " + jpFoodText);
+                    Toast.makeText(getActivity(), jpFoodText, Toast.LENGTH_SHORT).show();
+
 
                 } catch (UnsupportedEncodingException e) {
                     // 이 경우는 발생하지 않습니다.
+                    Log.e("디버그로그", "onClick: UnsupportedEncodingException 발생", e);
                 }
 
-                String url = "http://192.168.219.106:5000/japanese_food?keyword=일식&keyword2=" + japaneseFoodText;
+                String url = "http://192.168.219.106:5000/jp_food?keyword=일식&keyword2=" + jpFoodText;
+                Log.d("디버그로그", "onClick: 요청 URL - " + url);
                 Request request = new Request.Builder()
-                        .url(url)
-                        .build();
-                Toast.makeText(getActivity(), japaneseFoodText, Toast.LENGTH_SHORT).show();
+                    .url(url)
+                    .build();
+                Log.d("디버그로그", "onClick: 사용자에게 Toast 메시지 표시 - " + jpFoodText);
+
 
                 client.newCall(request).enqueue(new Callback() {
                     @Override
                     public void onFailure(@NotNull Call call, @NotNull IOException e) {
                         // 요청 실패 시 호출되는 메서드
-                        getActivity().runOnUiThread(() -> Toast.makeText(getContext(), "요청 실패: " + e.getMessage(), Toast.LENGTH_SHORT).show()); // UI 스레드에서 Toast 메시지를 통해 실패 메시지 표시
+                        Log.e("디버그로그", "onFailure: 요청 실패", e);
+                        getActivity().runOnUiThread(() -> {
+                            if (getActivity() != null) {
+                                Log.d("디버그로그", "getActivity() 호출 성공.");
+                            } else {
+                                Log.e("디버그로그", "getActivity() 호출 실패. Activity가 null입니다.");
+                            }
+
+                            // 토스트 메시지 표시 테스트
+                            if (getContext() != null) {
+                                Toast.makeText(getContext(), "테스트 토스트 메시지", Toast.LENGTH_SHORT).show();
+                            }
+                            // UI 스레드에서 실행 전 로그
+                            Log.d("디버그로그", "onFailure: UI 스레드에서 Toast 메시지 표시 - 요청 실패: " + e.getMessage());
+                            if (getContext() != null) {
+                                Log.d("디버그로그", "getContext() 호출 성공.");
+                            } else {
+                                Log.e("디버그로그", "getContext() 호출 실패. Context가 null입니다.");
+                            }
+                            Toast.makeText(getContext(), "요청 실패: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        });
                     }
 
                     @Override
                     public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                        Log.d("디버그로그", "onResponse: 서버로부터 응답 받음.");
                         // 요청 응답 받았을 때 호출되는 메서드
                         if (!response.isSuccessful()) {
+                            Log.d("디버그로그", "onResponse: 응답 실패. 코드: " + response);
                             throw new IOException("Unexpected code " + response);
                         }
                         final String responseData = response.body().string();
+                        Log.d("디버그로그", "onResponse: 응답 데이터: " + responseData);
 
                         getActivity().runOnUiThread(() -> {
                             try {
                                 JSONArray jsonArray = new JSONArray(responseData);
+                                Log.d("디버그로그", "UI Thread: 항목 목록 초기화");
                                 items.clear();
                                 for (int i = 0; i < jsonArray.length(); i++) {
                                     JSONObject storeObject = jsonArray.getJSONObject(i);
-                                    String tv_name = storeObject.getString("name");
-                                    String tv_add = storeObject.getString("addr");
-                                    items.add(new SearchVO(tv_name, tv_add,"해시태그","4.9", R.drawable.camera));
+                                    Log.d("디버그로그", "UI Thread: 항목 추가 - " + storeObject.getString("storeName"));
+                                    items.add(new SearchVO(storeObject.getString("storeName"),
+                                        storeObject.getString("address"),
+                                        storeObject.getString("menu"),
+                                        storeObject.getString("hashtag")));
                                 }
+                                Log.d("디버그로그", "UI Thread: 어댑터에 데이터 변경을 알림");
                                 adapter.notifyDataSetChanged();
                             } catch (JSONException e) {
-                                Log.e("UserSearchFragment", "JSON 파싱 에러: " + e.getMessage());
+                                Log.e("SearchFragment", "JSON 파싱 오류", e);
                             }
                         });
                     }
@@ -254,54 +366,95 @@ public class UserSearchFragment extends Fragment {
 
         });
 
-
-        ws_01 = view.findViewById(R.id.ws_01);
-        ws_01.setOnClickListener(new View.OnClickListener() { // 양식
+        // 양식
+        ws_01 = view.findViewById(R.id.jp_01);
+        ws_01.setOnClickListener(new View.OnClickListener() { // 한식
             @Override
             public void onClick(View v) {
-                OkHttpClient client = new OkHttpClient();
-                String westernFoodText = "";
+                Log.d("디버그로그", "onClick: 클릭 이벤트 처리 시작");
+                // OkHttpClient client = new OkHttpClient();
+                // OkHttpClient에 타임아웃 설정 추가
+                OkHttpClient client = new OkHttpClient.Builder()
+                    .connectTimeout(300, TimeUnit.SECONDS) // 연결 타임아웃
+                    .writeTimeout(300, TimeUnit.SECONDS) // 쓰기 타임아웃
+                    .readTimeout(300, TimeUnit.SECONDS) // 읽기 타임아웃
+                    .build();
+                String wsFoodText = "";
                 try {
-                    westernFoodText = URLEncoder.encode(ws_01.getText().toString(), StandardCharsets.UTF_8.name());
+                    Log.d("디버그로그", "onClick: URL 인코딩 시도");
+                    wsFoodText = URLEncoder.encode(jp_01.getText().toString(), StandardCharsets.UTF_8.name());
+                    Log.d("디버그로그", "onClick: URL 인코딩 성공 - " + wsFoodText);
+                    Toast.makeText(getActivity(), wsFoodText, Toast.LENGTH_SHORT).show();
+
 
                 } catch (UnsupportedEncodingException e) {
                     // 이 경우는 발생하지 않습니다.
+                    Log.e("디버그로그", "onClick: UnsupportedEncodingException 발생", e);
                 }
 
-                String url = "http://192.168.219.106:5000/western_food?keyword=양식&keyword2=" + westernFoodText;
+                String url = "http://192.168.219.106:5000/ws_food?keyword=양식&keyword2=" + wsFoodText;
+                Log.d("디버그로그", "onClick: 요청 URL - " + url);
                 Request request = new Request.Builder()
-                        .url(url)
-                        .build();
-                Toast.makeText(getActivity(), westernFoodText, Toast.LENGTH_SHORT).show();
+                    .url(url)
+                    .build();
+                Log.d("디버그로그", "onClick: 사용자에게 Toast 메시지 표시 - " + wsFoodText);
+
 
                 client.newCall(request).enqueue(new Callback() {
                     @Override
                     public void onFailure(@NotNull Call call, @NotNull IOException e) {
                         // 요청 실패 시 호출되는 메서드
-                        getActivity().runOnUiThread(() -> Toast.makeText(getContext(), "요청 실패: " + e.getMessage(), Toast.LENGTH_SHORT).show()); // UI 스레드에서 Toast 메시지를 통해 실패 메시지 표시
+                        Log.e("디버그로그", "onFailure: 요청 실패", e);
+                        getActivity().runOnUiThread(() -> {
+                            if (getActivity() != null) {
+                                Log.d("디버그로그", "getActivity() 호출 성공.");
+                            } else {
+                                Log.e("디버그로그", "getActivity() 호출 실패. Activity가 null입니다.");
+                            }
+
+                            // 토스트 메시지 표시 테스트
+                            if (getContext() != null) {
+                                Toast.makeText(getContext(), "테스트 토스트 메시지", Toast.LENGTH_SHORT).show();
+                            }
+                            // UI 스레드에서 실행 전 로그
+                            Log.d("디버그로그", "onFailure: UI 스레드에서 Toast 메시지 표시 - 요청 실패: " + e.getMessage());
+                            if (getContext() != null) {
+                                Log.d("디버그로그", "getContext() 호출 성공.");
+                            } else {
+                                Log.e("디버그로그", "getContext() 호출 실패. Context가 null입니다.");
+                            }
+                            Toast.makeText(getContext(), "요청 실패: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        });
                     }
 
                     @Override
                     public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                        Log.d("디버그로그", "onResponse: 서버로부터 응답 받음.");
                         // 요청 응답 받았을 때 호출되는 메서드
                         if (!response.isSuccessful()) {
+                            Log.d("디버그로그", "onResponse: 응답 실패. 코드: " + response);
                             throw new IOException("Unexpected code " + response);
                         }
                         final String responseData = response.body().string();
+                        Log.d("디버그로그", "onResponse: 응답 데이터: " + responseData);
 
                         getActivity().runOnUiThread(() -> {
                             try {
                                 JSONArray jsonArray = new JSONArray(responseData);
+                                Log.d("디버그로그", "UI Thread: 항목 목록 초기화");
                                 items.clear();
                                 for (int i = 0; i < jsonArray.length(); i++) {
                                     JSONObject storeObject = jsonArray.getJSONObject(i);
-                                    String tv_name = storeObject.getString("name");
-                                    String tv_add = storeObject.getString("addr");
-                                    items.add(new SearchVO(tv_name, tv_add,"해시태그","4.9", R.drawable.camera));
+                                    Log.d("디버그로그", "UI Thread: 항목 추가 - " + storeObject.getString("storeName"));
+                                    items.add(new SearchVO(storeObject.getString("storeName"),
+                                        storeObject.getString("address"),
+                                        storeObject.getString("menu"),
+                                        storeObject.getString("hashtag")));
                                 }
+                                Log.d("디버그로그", "UI Thread: 어댑터에 데이터 변경을 알림");
                                 adapter.notifyDataSetChanged();
                             } catch (JSONException e) {
-                                Log.e("UserSearchFragment", "JSON 파싱 에러: " + e.getMessage());
+                                Log.e("SearchFragment", "JSON 파싱 오류", e);
                             }
                         });
                     }
@@ -310,110 +463,97 @@ public class UserSearchFragment extends Fragment {
 
         });
 
+        // 분식
 
-        snack_01 = view.findViewById(R.id.snack_01);
-        snack_01.setOnClickListener(new View.OnClickListener() { // 분식
-            @Override
-            public void onClick(View v) {
-                OkHttpClient client = new OkHttpClient();
-                String snackFoodText = "";
-                try {
-                    snackFoodText = URLEncoder.encode(snack_01.getText().toString(), StandardCharsets.UTF_8.name());
-
-                } catch (UnsupportedEncodingException e) {
-                    // 이 경우는 발생하지 않습니다.
-                }
-
-                String url = "http://192.168.219.106:5000/snack_food?keyword=분식&keyword2=" + snackFoodText;
-                Request request = new Request.Builder()
-                        .url(url)
-                        .build();
-                Toast.makeText(getActivity(), snackFoodText, Toast.LENGTH_SHORT).show();
-
-                client.newCall(request).enqueue(new Callback() {
-                    @Override
-                    public void onFailure(@NotNull Call call, @NotNull IOException e) {
-                        // 요청 실패 시 호출되는 메서드
-                        getActivity().runOnUiThread(() -> Toast.makeText(getContext(), "요청 실패: " + e.getMessage(), Toast.LENGTH_SHORT).show()); // UI 스레드에서 Toast 메시지를 통해 실패 메시지 표시
-                    }
-
-                    @Override
-                    public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-                        // 요청 응답 받았을 때 호출되는 메서드
-                        if (!response.isSuccessful()) {
-                            throw new IOException("Unexpected code " + response);
-                        }
-                        final String responseData = response.body().string();
-
-                        getActivity().runOnUiThread(() -> {
-                            try {
-                                JSONArray jsonArray = new JSONArray(responseData);
-                                items.clear();
-                                for (int i = 0; i < jsonArray.length(); i++) {
-                                    JSONObject storeObject = jsonArray.getJSONObject(i);
-                                    String tv_name = storeObject.getString("name");
-                                    String tv_add = storeObject.getString("addr");
-                                    items.add(new SearchVO(tv_name, tv_add,"해시태그","4.9", R.drawable.camera));
-                                }
-                                adapter.notifyDataSetChanged();
-                            } catch (JSONException e) {
-                                Log.e("UserSearchFragment", "JSON 파싱 에러: " + e.getMessage());
-                            }
-                        });
-                    }
-                });
-            }
-
-        });
-
-
+        // 카페
         cafe_01 = view.findViewById(R.id.cafe_01);
-        cafe_01.setOnClickListener(new View.OnClickListener() { // 카페
+        cafe_01.setOnClickListener(new View.OnClickListener() { // 한식
             @Override
             public void onClick(View v) {
-                OkHttpClient client = new OkHttpClient();
+                Log.d("디버그로그", "onClick: 클릭 이벤트 처리 시작");
+                // OkHttpClient client = new OkHttpClient();
+                // OkHttpClient에 타임아웃 설정 추가
+                OkHttpClient client = new OkHttpClient.Builder()
+                    .connectTimeout(500, TimeUnit.SECONDS) // 연결 타임아웃
+                    .writeTimeout(500, TimeUnit.SECONDS) // 쓰기 타임아웃
+                    .readTimeout(500, TimeUnit.SECONDS) // 읽기 타임아웃
+                    .build();
                 String cafeFoodText = "";
                 try {
+                    Log.d("디버그로그", "onClick: URL 인코딩 시도");
                     cafeFoodText = URLEncoder.encode(cafe_01.getText().toString(), StandardCharsets.UTF_8.name());
+                    Log.d("디버그로그", "onClick: URL 인코딩 성공 - " + cafeFoodText);
+                    Toast.makeText(getActivity(), cafeFoodText, Toast.LENGTH_SHORT).show();
+
 
                 } catch (UnsupportedEncodingException e) {
                     // 이 경우는 발생하지 않습니다.
+                    Log.e("디버그로그", "onClick: UnsupportedEncodingException 발생", e);
                 }
 
                 String url = "http://192.168.219.106:5000/cafe_food?keyword=카페&keyword2=" + cafeFoodText;
+                Log.d("디버그로그", "onClick: 요청 URL - " + url);
                 Request request = new Request.Builder()
-                        .url(url)
-                        .build();
-                Toast.makeText(getActivity(), cafeFoodText, Toast.LENGTH_SHORT).show();
+                    .url(url)
+                    .build();
+                Log.d("디버그로그", "onClick: 사용자에게 Toast 메시지 표시 - " + cafeFoodText);
+
 
                 client.newCall(request).enqueue(new Callback() {
                     @Override
                     public void onFailure(@NotNull Call call, @NotNull IOException e) {
                         // 요청 실패 시 호출되는 메서드
-                        getActivity().runOnUiThread(() -> Toast.makeText(getContext(), "요청 실패: " + e.getMessage(), Toast.LENGTH_SHORT).show()); // UI 스레드에서 Toast 메시지를 통해 실패 메시지 표시
+                        Log.e("디버그로그", "onFailure: 요청 실패", e);
+                        getActivity().runOnUiThread(() -> {
+                            if (getActivity() != null) {
+                                Log.d("디버그로그", "getActivity() 호출 성공.");
+                            } else {
+                                Log.e("디버그로그", "getActivity() 호출 실패. Activity가 null입니다.");
+                            }
+
+                            // 토스트 메시지 표시 테스트
+                            if (getContext() != null) {
+                                Toast.makeText(getContext(), "테스트 토스트 메시지", Toast.LENGTH_SHORT).show();
+                            }
+                            // UI 스레드에서 실행 전 로그
+                            Log.d("디버그로그", "onFailure: UI 스레드에서 Toast 메시지 표시 - 요청 실패: " + e.getMessage());
+                            if (getContext() != null) {
+                                Log.d("디버그로그", "getContext() 호출 성공.");
+                            } else {
+                                Log.e("디버그로그", "getContext() 호출 실패. Context가 null입니다.");
+                            }
+                            Toast.makeText(getContext(), "요청 실패: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        });
                     }
 
                     @Override
                     public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                        Log.d("디버그로그", "onResponse: 서버로부터 응답 받음.");
                         // 요청 응답 받았을 때 호출되는 메서드
                         if (!response.isSuccessful()) {
+                            Log.d("디버그로그", "onResponse: 응답 실패. 코드: " + response);
                             throw new IOException("Unexpected code " + response);
                         }
                         final String responseData = response.body().string();
+                        Log.d("디버그로그", "onResponse: 응답 데이터: " + responseData);
 
                         getActivity().runOnUiThread(() -> {
                             try {
                                 JSONArray jsonArray = new JSONArray(responseData);
+                                Log.d("디버그로그", "UI Thread: 항목 목록 초기화");
                                 items.clear();
                                 for (int i = 0; i < jsonArray.length(); i++) {
                                     JSONObject storeObject = jsonArray.getJSONObject(i);
-                                    String tv_name = storeObject.getString("name");
-                                    String tv_add = storeObject.getString("addr");
-                                    items.add(new SearchVO(tv_name, tv_add,"해시태그","4.9", R.drawable.camera));
+                                    Log.d("디버그로그", "UI Thread: 항목 추가 - " + storeObject.getString("storeName"));
+                                    items.add(new SearchVO(storeObject.getString("storeName"),
+                                        storeObject.getString("address"),
+                                        storeObject.getString("menu"),
+                                        storeObject.getString("hashtag")));
                                 }
+                                Log.d("디버그로그", "UI Thread: 어댑터에 데이터 변경을 알림");
                                 adapter.notifyDataSetChanged();
                             } catch (JSONException e) {
-                                Log.e("UserSearchFragment", "JSON 파싱 에러: " + e.getMessage());
+                                Log.e("SearchFragment", "JSON 파싱 오류", e);
                             }
                         });
                     }
@@ -421,10 +561,13 @@ public class UserSearchFragment extends Fragment {
             }
 
         });
+
+
 
 // onclick
         return view;
     }
+
 
     // 모든 스크롤뷰를 숨기는 메소드
     private void hideAllScrollViews(View view) {
@@ -500,51 +643,6 @@ public class UserSearchFragment extends Fragment {
         return buffer.toString();
         // StringBuffer를 문자열로 변환하여 반환
     }
-    private RequestQueue requestQueue;
-    String storeName;
-    String hashtag;
-    String addr;
-    String rate;
-//    ArrayList<SearchVO> items;
-
-    public void getStore() {
-        String url = "http://192.168.219.101:8081/api/getStoreInfo"; // 가게 정보 조회 API 엔드포인트, 실제 엔드포인트로 수정 필요
-        if (requestQueue == null) {
-            requestQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
-        }
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Method.GET, url, null,
-                response -> {
-                    try {
-                        // 응답으로 받은 JSON 배열을 순회하면서 가게 정보 처리
-                        for (int i = 0; i < response.length(); i++) {
-                            JSONObject storeInfo = response.getJSONObject(i);
-                            storeName = storeInfo.getString("storeName"); // 가게 이름
-                            hashtag = storeInfo.getString("hashtag");
-                            addr = storeInfo.getString("addr");
-                            rate = storeInfo.getString("rate");
-                            Log.d("name", storeName);
-                            Log.d("hash", hashtag);
-                            Log.d("addr", addr);
-                            SearchVO vo1 = new SearchVO(storeName, addr, hashtag,rate, R.drawable.camera);
-                            items.add(vo1);
-                            Log.d("rate", rate);
-                            rv_search.getAdapter().notifyDataSetChanged();
-                        }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                        Log.d("실패", "가게정보 불러오는데 실패");
-//                        Toast.makeText(getContext(), "가게 정보를 불러오는 데 실패했습니다.", Toast.LENGTH_SHORT).show();
-                    }
-                },
-                error -> {
-//                    Toast.makeText(getContext(), "가게 정보를 불러오는 데 실패했습니다: " + error.toString(), Toast.LENGTH_SHORT).show();
-                    Log.d("에러", "가게정보 불러오는데 에러" + error.toString());
-                });
-
-        requestQueue.add(jsonArrayRequest); // requestQueue는 Volley의 RequestQueue 객체의 참조, 클래스 멤버 변수로 관리되어야 함
-    }
-
-
 
 }
 
