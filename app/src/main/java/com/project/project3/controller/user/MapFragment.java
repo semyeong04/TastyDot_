@@ -73,6 +73,9 @@ public class MapFragment extends Fragment implements MapView.POIItemEventListene
     private String mParam1;
     private String mParam2;
 
+    private ArrayList<MapPOIItem> allMarkers = new ArrayList<>();
+
+
     public MapFragment() {
         // Required empty public constructor
     }
@@ -155,9 +158,7 @@ public class MapFragment extends Fragment implements MapView.POIItemEventListene
                             } catch (NumberFormatException e) {
                                 Log.e("getStore", "Latitude or Longitude parse error", e);
                             }
-                            Log.d("이름", storeName);
-                            Log.d("위도", String.valueOf(latitude));
-                            Log.d("경도", String.valueOf(longitude));
+
 
                             // 마커 생성 및 지도에 추가
                             MapPoint mapPoint = MapPoint.mapPointWithGeoCoord(latitude, longitude);
@@ -168,7 +169,8 @@ public class MapFragment extends Fragment implements MapView.POIItemEventListene
                             marker.setMarkerType(MapPOIItem.MarkerType.BluePin); // 마커 모양
                             marker.setSelectedMarkerType(MapPOIItem.MarkerType.RedPin); // 선택된 마커 모양
                             mapView.addPOIItem(marker); // mapView는 지도 객체의 참조, 클래스 멤버 변수로 관리되어야 함
-                        }
+                            allMarkers.add(marker);
+                    }
                     } catch (JSONException e) {
                         e.printStackTrace();
                         Log.d("실패", "가게정보 불러오는데 실패");
@@ -275,13 +277,20 @@ public class MapFragment extends Fragment implements MapView.POIItemEventListene
 
     }
 
+    boolean a = true;
     @Override
     public void onMapViewZoomLevelChanged(MapView mapView, int i) {
         if (mapView.getZoomLevel() >= 3) {
+            a = false;
             mapView.removeAllPOIItems();
         } else {
+            if (!a) {
+                for (MapPOIItem marker : allMarkers) {
+                    mapView.addPOIItem(marker);
+                }
+                a = true;
+            }
 
-            getStore();
         }
     }
 
@@ -313,7 +322,6 @@ public class MapFragment extends Fragment implements MapView.POIItemEventListene
 
     @Override
     public void onMapViewMoveFinished(MapView mapView, MapPoint mapPoint) {
-
     }
 
 

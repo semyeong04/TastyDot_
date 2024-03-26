@@ -6,116 +6,654 @@
     android:layout_height="match_parent"
     tools:context=".controller.user.UserSearchFragment">
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone"/>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.1" />
-
-        <EditText
-            android:id="@+id/editTextText"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@drawable/edge_menucolor"
-            android:backgroundTint="#CC000000"
-            android:ems="10"
-            android:inputType="text"
-            app:layout_constraintBottom_toTopOf="@+id/guideline7"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/imageView15"
-            android:layout_width="33dp"
-            android:layout_height="26dp"
-            android:layout_marginRight="20dp"
-            android:src="@drawable/icon_search"
-            app:layout_constraintBottom_toTopOf="@+id/guideline7"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="412dp"
-            android:layout_height="55dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline7">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textView33"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="한식"
-                android:textSize="20sp" />
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.1" />
 
-            <TextView
-                android:id="@+id/textView34"
+            <SearchView
+                android:id="@+id/searchView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="중식"
-                android:textSize="20sp" />
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layoutDirection="rtl"
+                android:iconifiedByDefault="false"
+                android:queryHint="검색어를 입력해주세요"
+                android:gravity="end"/>
 
-            <TextView
-                android:id="@+id/textView35"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="일식"
-                android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/textView36"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="양식"
-                android:textSize="20sp" />
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="412dp"
+                android:layout_height="55dp"
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/textView42"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="분식"
-                android:textSize="20sp" />
+                <TextView
+                    android:id="@+id/korean"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="한식"
+                    android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/textView43"
+                <TextView
+                    android:id="@+id/chinese"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="중식"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/japanese"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="일식"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/western"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="양식"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/snack"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="분식"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/cafe"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="카페"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <!--한식 -->
+            <HorizontalScrollView
+                android:id="@+id/horizontalScrollView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="카페"
-                android:textSize="20sp" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/kr_01"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="#8DE6E6E6"
+                        android:gravity="center"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:text="설렁탕"
+                        android:textColor="#000000"
+                        app:cornerRadius="100dp" />
+
+                    <Button
+                        android:id="@+id/kr_02"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="#8DE6E6E6"
+                        android:gravity="center"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:text="김치찌개"
+                        android:textColor="#000000"
+                        app:cornerRadius="100dp" />
+
+                    <Button
+                        android:id="@+id/kr_03"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="#8DE6E6E6"
+                        android:gravity="center"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:text="국밥"
+                        android:textColor="#000000"
+                        app:cornerRadius="100dp" />
+
+                    <Button
+                        android:id="@+id/kr_04"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="#8DE6E6E6"
+                        android:gravity="center"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:text="회"
+                        android:textColor="#000000"
+                        app:cornerRadius="100dp" />
+
+                    <Button
+                        android:id="@+id/kr_05"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="#8DE6E6E6"
+                        android:gravity="center"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:text="한정식"
+                        android:textColor="#000000"
+                        app:cornerRadius="100dp" />
+
+                    <!-- 버튼 추가하기 -->
+
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <!-- 중식 -->
+
+            <HorizontalScrollView
+                android:id="@+id/horizontalScrollView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/cn_01"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="#8DE6E6E6"
+                        android:gravity="center"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:text="짜장면"
+                        android:textColor="#000000"
+                        app:cornerRadius="100dp" />
+
+                    <Button
+                        android:id="@+id/cn_02"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="#8DE6E6E6"
+                        android:gravity="center"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:text="짬뽕"
+                        android:textColor="#000000"
+                        app:cornerRadius="100dp" />
+
+                    <Button
+                        android:id="@+id/cn_03"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="#8DE6E6E6"
+                        android:gravity="center"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:text="볶음밥"
+                        android:textColor="#000000"
+                        app:cornerRadius="100dp" />
+
+                    <Button
+                        android:id="@+id/cn_04"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="#8DE6E6E6"
+                        android:gravity="center"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:text="탕수육"
+                        android:textColor="#000000"
+                        app:cornerRadius="100dp" />
+
+                    <Button
+                        android:id="@+id/cn_05"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="#8DE6E6E6"
+                        android:gravity="center"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:text="마라탕"
+                        android:textColor="#000000"
+                        app:cornerRadius="100dp" />
+
+                    <!-- 버튼 추가하기 -->
+
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <!-- 일식 -->
+            <HorizontalScrollView
+                android:id="@+id/horizontalScrollView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/jp_01"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="#8DE6E6E6"
+                        android:gravity="center"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:text="초밥"
+                        android:textColor="#000000"
+                        app:cornerRadius="100dp" />
+
+                    <Button
+                        android:id="@+id/jp_02"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="#8DE6E6E6"
+                        android:gravity="center"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:text="돈가스"
+                        android:textColor="#000000"
+                        app:cornerRadius="100dp" />
+
+                    <Button
+                        android:id="@+id/jp_03"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="#8DE6E6E6"
+                        android:gravity="center"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:text="우동"
+                        android:textColor="#000000"
+                        app:cornerRadius="100dp" />
+
+                    <Button
+                        android:id="@+id/jp_04"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="#8DE6E6E6"
+                        android:gravity="center"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:text="롤"
+                        android:textColor="#000000"
+                        app:cornerRadius="100dp" />
+
+                    <Button
+                        android:id="@+id/jp_05"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="#8DE6E6E6"
+                        android:gravity="center"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:text="타코야끼"
+                        android:textColor="#000000"
+                        app:cornerRadius="100dp" />
+
+                    <!-- 버튼 추가하기 -->
+
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <!-- 양식 -->
+            <HorizontalScrollView
+                android:id="@+id/horizontalScrollView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/ws_01"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="#8DE6E6E6"
+                        android:gravity="center"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:text="파스타"
+                        android:textColor="#000000"
+                        app:cornerRadius="100dp" />
+
+                    <Button
+                        android:id="@+id/ws_02"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="#8DE6E6E6"
+                        android:gravity="center"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:text="피자"
+                        android:textColor="#000000"
+                        app:cornerRadius="100dp" />
+
+                    <Button
+                        android:id="@+id/ws_03"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="#8DE6E6E6"
+                        android:gravity="center"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:text="햄버거"
+                        android:textColor="#000000"
+                        app:cornerRadius="100dp" />
+
+                    <Button
+                        android:id="@+id/ws_04"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="#8DE6E6E6"
+                        android:gravity="center"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:text="샌드위치"
+                        android:textColor="#000000"
+                        app:cornerRadius="100dp" />
+
+
+
+                    <!-- 버튼 추가하기 -->
+
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <!-- 분식 -->
+            <HorizontalScrollView
+                android:id="@+id/horizontalScrollView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/snack_01"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="#8DE6E6E6"
+                        android:gravity="center"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:text="떡볶이"
+                        android:textColor="#000000"
+                        app:cornerRadius="100dp" />
+
+                    <Button
+                        android:id="@+id/snack_02"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="#8DE6E6E6"
+                        android:gravity="center"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:text="라면"
+                        android:textColor="#000000"
+                        app:cornerRadius="100dp" />
+
+                    <Button
+                        android:id="@+id/snack_03"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="#8DE6E6E6"
+                        android:gravity="center"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:text="쫄면"
+                        android:textColor="#000000"
+                        app:cornerRadius="100dp" />
+
+                    <Button
+                        android:id="@+id/snack_04"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="#8DE6E6E6"
+                        android:gravity="center"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:text="튀김"
+                        android:textColor="#000000"
+                        app:cornerRadius="100dp" />
+
+                    <Button
+                        android:id="@+id/snack_05"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="#8DE6E6E6"
+                        android:gravity="center"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:text="순대"
+                        android:textColor="#000000"
+                        app:cornerRadius="100dp" />
+
+                    <!-- 버튼 추가하기 -->
+
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <!-- 카페 -->
+            <HorizontalScrollView
+                android:id="@+id/horizontalScrollView6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/cafe_01"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="#8DE6E6E6"
+                        android:gravity="center"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:text="아메라카노"
+                        android:textColor="#000000"
+                        app:cornerRadius="100dp" />
+
+                    <Button
+                        android:id="@+id/cafe_02"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="#8DE6E6E6"
+                        android:gravity="center"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:text="카페라떼"
+                        android:textColor="#000000"
+                        app:cornerRadius="100dp" />
+
+                    <Button
+                        android:id="@+id/cafe_03"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="#8DE6E6E6"
+                        android:gravity="center"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:text="딸기라떼"
+                        android:textColor="#000000"
+                        app:cornerRadius="100dp" />
+
+                    <Button
+                        android:id="@+id/cafe_04"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="#8DE6E6E6"
+                        android:gravity="center"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:text="쿠키"
+                        android:textColor="#000000"
+                        app:cornerRadius="100dp" />
+
+                    <Button
+                        android:id="@+id/cafe_05"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="#8DE6E6E6"
+                        android:gravity="center"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:text="카라멜마끼아또"
+                        android:textColor="#000000"
+                        app:cornerRadius="100dp" />
+
+                    <!-- 버튼 추가하기 -->
+
+                </LinearLayout>
+            </HorizontalScrollView>
+
+
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_search"
             android:layout_width="409dp"
-            android:layout_height="536dp"
+            android:layout_height="510dp"
             android:layout_marginStart="1dp"
-            android:layout_marginTop="1dp"
             android:layout_marginEnd="1dp"
             android:layout_marginBottom="1dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

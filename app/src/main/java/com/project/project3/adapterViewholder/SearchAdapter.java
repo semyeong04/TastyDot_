@@ -22,6 +22,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchViewHolder> {
 
     private ArrayList<SearchVO> dataset;
 
+
     public SearchAdapter(ArrayList<SearchVO> dataset) { this.dataset = dataset; }
 
     @NonNull
@@ -39,8 +40,8 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchViewHolder> {
         holder.getImg_list().setImageResource(item.getImg_list());
         holder.getTv_add().setText(item.getTv_add());
         holder.getTv_Name().setText(item.getTv_name());
-        holder.getTv_score().setText(item.getTv_score());
-        holder.getTv_hash().setText(item.getTv_hash());
+//        holder.getTv_review().setText(item.getTv_review());
+        // holder.getTv_score().setText(item.getTv_score());
         holder.listener = new OnItemClickListener() {
             @Override
             public void OnClickListener(View v, int position) {
@@ -56,5 +57,11 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchViewHolder> {
     @Override
     public int getItemCount() {
         return dataset.size();
+    }
+
+    // 데이터 세트 업데이트 메소드
+    public void updateData(ArrayList<SearchVO> newData) {
+        dataset = newData;
+        notifyDataSetChanged();
     }
 }
